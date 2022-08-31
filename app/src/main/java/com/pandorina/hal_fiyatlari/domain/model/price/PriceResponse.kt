@@ -1,7 +1,8 @@
 package com.pandorina.hal_fiyatlari.domain.model.price
 
+
 data class PriceResponse(
-    val cityId: Int?,
+    val cityId: String?,
     val title: String?,
     val date: String?,
     val size: Int?,

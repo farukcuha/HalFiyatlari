@@ -1,15 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: io.insert-koin:koin-androidx-compose:3.2.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ac5de0a6debc1137d965c2e878448cf9/transformed/koin-androidx-compose-3.2.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/177dc7e8ca0864c063efb2de96a69bae/transformed/koin-androidx-compose-3.2.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e6f7f53dc8aac3e09589b8b9476591df/transformed/koin-androidx-compose-3.2.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b82dec16078e45f7952625ff782f6099/transformed/koin-androidx-compose-3.2.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b8bff02fb01f45ef093913a8b159576a/transformed/koin-androidx-compose-3.2.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/be13ef1ca16e85c189d9d32d7d5b810c/transformed/koin-androidx-compose-3.2.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/10537b220e58df5e52f78875b2fcac68/transformed/koin-androidx-compose-3.2.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/10537b220e58df5e52f78875b2fcac68/transformed/koin-androidx-compose-3.2.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/10537b220e58df5e52f78875b2fcac68/transformed/koin-androidx-compose-3.2.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/50884ed9dfce9e0d35e2f893d36e5e9b/transformed/koin-androidx-compose-3.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/50884ed9dfce9e0d35e2f893d36e5e9b/transformed/koin-androidx-compose-3.2.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/50884ed9dfce9e0d35e2f893d36e5e9b/transformed/koin-androidx-compose-3.2.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.insert-koin/koin-androidx-compose/3.2.0/b41b5e028129c6163f3c9919e08976af65502100/koin-androidx-compose-3.2.0-javadoc.jar!/" />

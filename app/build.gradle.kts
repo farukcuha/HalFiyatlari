@@ -3,6 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("kotlinx-serialization")
+    id("dagger.hilt.android.plugin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -61,12 +63,18 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation("com.google.firebase:firebase-database-ktx:20.0.5")
+    implementation("com.google.firebase:firebase-firestore:24.0.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.2")
 
     implementationAppLibraries()
+    implementationTestLibraries()
+    implementationAndroidTestLibraries()
     implementationCompose()
     implementationKtor()
     implementationKoin()
+    implementationHilt()
     implementationRoom()
-    implementationGlide()
+    implementationCoil()
     implementationSerialization()
 }

@@ -6,16 +6,24 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class PriceDto(
+    @SerialName("cityId")
+    val cityId: String? = null,
+    @SerialName("id")
+    val id: String? = null,
+    @SerialName("lastUpdatedTime")
+    val lastUpdatedTime: Long? = null,
+    @SerialName("priceDate")
+    val priceDate: String? = null,
     @SerialName("name")
-    val name: String?,
+    val name: String? = null,
     @SerialName("icon")
-    val icon: String?,
+    val icon: String? = null,
     @SerialName("measure")
-    val measure: String?,
-    @SerialName("price_primary")
-    val pricePrimary: String?,
-    @SerialName("price_secondary")
-    val priceSecondary: String?
+    val measure: String? = null,
+    @SerialName("pricePrimary")
+    val pricePrimary: String? = null,
+    @SerialName("priceSecondary")
+    val priceSecondary: String? = null
 ): BaseDto<Price>(){
     override fun toDomain(): Price {
         return Price(

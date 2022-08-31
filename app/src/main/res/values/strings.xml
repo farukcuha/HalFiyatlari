@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Hal Fiyatları</string>
+    <string name="home">Anasayfa</string>
+    <string name="settings">Ayarlar</string>
+    <string name="prices">Hal Fiyatları</string>
+    <string name="earnings">Kazanç Kayıtlarım</string>
+    <string name="news">Son Dakika Haberleri</string>
+    <string name="currency">Güncel Döviz Fiyatları</string>
+    <string name="cities">Bölgeler</string>
+    <string name="back">Back</string>
+    <string name="cancel">Cancel</string>
+    <string name="info">Info</string>
 </resources>

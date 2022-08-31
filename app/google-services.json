@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "309823481863",
+    "firebase_url": "https://halfiyatlari-511c9-default-rtdb.firebaseio.com",
+    "project_id": "halfiyatlari-511c9",
+    "storage_bucket": "halfiyatlari-511c9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309823481863:android:7817bdc86e3a555a9122a2",
+        "android_client_info": {
+          "package_name": "com.pandorina.hal_fiyatlari"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "309823481863-u7ploj744f50dkhkifvli2h4q2a5esvf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfAnQohWNZLVENRVfTKalboBk1a-2FNlI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "309823481863-u7ploj744f50dkhkifvli2h4q2a5esvf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,4 +4,8 @@
     <style name="Theme.HalFiyatlari" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/purple_700</item>
     </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">#000000</item>
+    </style>
 </resources>

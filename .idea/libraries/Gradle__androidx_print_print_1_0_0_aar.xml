@@ -1,18 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.print:print:1.0.0@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1dc43879793bc2f737cdd3eaf88183d8/transformed/print-1.0.0/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/579e86f0c34f6272d135221db7db60fc/transformed/print-1.0.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/41d6140982f6f06eb358310e49492089/transformed/print-1.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a6b7f790fb0b9496a6dbd38e3cb02805/transformed/print-1.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/58471d976a533aa35b9531f06bd9b503/transformed/print-1.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7e8ffe74c69a91d91b01452aade55585/transformed/print-1.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a41449b9d6cc6eebd0c999f6fb5f79b9/transformed/print-1.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4d1bca40dd3dcd1ff6a6ccf442067fd5/transformed/print-1.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1dc43879793bc2f737cdd3eaf88183d8/transformed/print-1.0.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1dc43879793bc2f737cdd3eaf88183d8/transformed/print-1.0.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1dc43879793bc2f737cdd3eaf88183d8/transformed/print-1.0.0/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/579e86f0c34f6272d135221db7db60fc/transformed/print-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/579e86f0c34f6272d135221db7db60fc/transformed/print-1.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/579e86f0c34f6272d135221db7db60fc/transformed/print-1.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
