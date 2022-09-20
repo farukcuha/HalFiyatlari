@@ -11,15 +11,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PricesViewModel @Inject constructor(
-    private val savedStateHandle: SavedStateHandle,
+    savedStateHandle: SavedStateHandle,
     private val pricesRepository: PricesRepository
-): BaseViewModel(){
-    private val _pricesUiState = mutableStateOf(PricesUiState())
-    val pricesUiState: State<PricesUiState> = _pricesUiState
-
-    private val _datesUiState = mutableStateOf(DatesUiState())
-    val datesUiState: State<DatesUiState> = _datesUiState
-
+): BaseViewModel<PricesUiState>(PricesUiState()){
     private val _title = mutableStateOf("")
     val title: State<String> = _title
 
@@ -37,28 +31,26 @@ class PricesViewModel @Inject constructor(
     }
 
     private fun getDates(cityId: String?) {
-        job = viewModelScope.launch {
-            _datesUiState.value = DatesUiState(isLoading = true)
+        launchViewModelScope {
+            _uiState.value = PricesUiState(isLoading = true)
             pricesRepository.getPriceDates(cityId).onSuccess {
                 val dates = it.map { it.date }
-                _datesUiState.value = DatesUiState(isLoading = false, dates = dates)
-                getPrices(cityId, datesUiState.value.dates?.firstOrNull())
+                _uiState.value = _uiState.value.copy(isLoading = false, dates = dates)
+                getPrices(cityId, uiState.value.dates?.firstOrNull())
             }.onFailure {
-                _datesUiState.value = DatesUiState(isLoading = false, error = it.localizedMessage)
+                _uiState.value = _uiState.value.copy(isLoading = false, error = it.localizedMessage)
             }
         }
     }
 
     fun getPrices(cityId: String?, date: String?){
         job = viewModelScope.launch {
-            _pricesUiState.value = PricesUiState(isLoading = true)
+            _uiState.value = _uiState.value.copy(isLoading = true, prices = emptyList())
             pricesRepository.getPricesByDate(cityId, date).onSuccess {
-                val prices = it.map {
-                    it.toDomain()
-                }
-                _pricesUiState.value = PricesUiState(isLoading = false, prices = prices)
+                val prices = it.map { priceDto -> priceDto.toDomain() }
+                _uiState.value = _uiState.value.copy(isLoading = false, prices = prices)
             }.onFailure {
-                _pricesUiState.value = PricesUiState(isLoading = false, error = it.localizedMessage)
+                _uiState.value = _uiState.value.copy(isLoading = false, error = it.localizedMessage)
             }
         }
     }

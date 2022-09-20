@@ -8,5 +8,5 @@ data class Currency(
     val price: String?,
     val changeRate: String?,
     val changeAmount: String?,
-    val trend: Int?
+    val trendUp: Boolean?
 )

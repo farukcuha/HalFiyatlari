@@ -15,8 +15,8 @@ data class CurrencyDto(
     val changeRate: String?,
     @SerialName("changeAmount")
     val changeAmount: String?,
-    @SerialName("trend")
-    val trend: Int?
+    @SerialName("trendUp")
+    val trendUp: Boolean?
 ): BaseDto<Currency>() {
 
     override fun toDomain(): Currency {
@@ -25,7 +25,7 @@ data class CurrencyDto(
             price = price,
             changeRate = changeRate,
             changeAmount = changeAmount,
-            trend = trend
+            trendUp = trendUp
         )
     }
 }

@@ -84,7 +84,7 @@ fun EarningItem(
                 fontWeight = FontWeight.Normal,
                 text = "\uD83D\uDD52 ${earning.date}",
                 modifier = Modifier
-                    .constrainAs(refUnitPrice) {
+                    .constrainAs(refDate) {
                         start.linkTo(parent.start, 8.dp)
                         top.linkTo(refTotalAmount.bottom)
                         bottom.linkTo(parent.bottom, 8.dp)

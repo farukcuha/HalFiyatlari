@@ -9,20 +9,19 @@ import kotlinx.serialization.SerializationException
 
 inline fun <reified T> safeApiCall(
     crossinline process: suspend () -> HttpClientCall
-): Flow<NetworkResult<T>> = flow {
-    emit(NetworkResult.Loading())
+): Flow<Result<T>> = flow {
     try {
         val result = process.invoke()
-        emit(NetworkResult.Success<T>(result.body()))
+        emit(Result.success<T>(result.body()))
     } catch (e: ClientRequestException) {
-        emit(NetworkResult.Error<T>(e.localizedMessage))
+        emit(Result.failure<T>(e))
     } catch (e: ServerResponseException) {
-        emit(NetworkResult.Error<T>(e.localizedMessage))
+        emit(Result.failure<T>(e))
     } catch (e: IOException) {
-        emit(NetworkResult.Error<T>(e.localizedMessage))
+        emit(Result.failure<T>(e))
     } catch (e: SerializationException) {
-        emit(NetworkResult.Error<T>(e.localizedMessage))
+        emit(Result.failure<T>(e))
     } catch (e: Exception) {
-        emit(NetworkResult.Error<T>(e.localizedMessage))
+        emit(Result.failure<T>(e))
     }
 }

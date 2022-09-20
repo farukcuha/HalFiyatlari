@@ -34,5 +34,4 @@ data class PriceDto(
             price_secondary = priceSecondary
         )
     }
-
 }

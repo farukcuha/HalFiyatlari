@@ -5,7 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pandorina.hal_fiyatlari.domain.repository.NewsRepository
-import com.pandorina.hal_fiyatlari.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -29,25 +28,22 @@ class NewsViewModel @Inject constructor(
 
     private fun getNewsCategories(){
         viewModelScope.launch {
-            newsRepository.getCategories().collectLatest {
-                when(it){
-                    is NetworkResult.Loading -> {
-                        _newsUiStateUiState.value =
-                            _newsUiStateUiState.value.copy(isLoading = true)
-                    }
-                    is NetworkResult.Success -> {
-                        _newsUiStateUiState.value =
-                            _newsUiStateUiState.value.copy(isLoading = false, categories = it.data)
-                        viewModelScope.launch {
-                            currentPage.collectLatest { currentPage ->
-                                getNews(_newsUiStateUiState.value.categories?.get(currentPage)?.id!!)
-                            }
+            _newsUiStateUiState.value =
+                _newsUiStateUiState.value.copy(isLoading = true)
+            newsRepository.getCategories().collectLatest { result ->
+                result.onSuccess {
+                    _newsUiStateUiState.value =
+                        _newsUiStateUiState.value.copy(isLoading = false, categories = it)
+                    viewModelScope.launch {
+                        currentPage.collectLatest { currentPage ->
+                            _newsUiStateUiState.value =
+                                _newsUiStateUiState.value.copy(isLoading = false, news = emptyList())
+                            getNews(_newsUiStateUiState.value.categories?.get(currentPage)?.id!!)
                         }
                     }
-                    is NetworkResult.Error -> {
-                        _newsUiStateUiState.value =
-                            _newsUiStateUiState.value.copy(isLoading = false, error = it.errorMessage)
-                    }
+                }.onFailure {
+                    _newsUiStateUiState.value =
+                        _newsUiStateUiState.value.copy(isLoading = false, error = it.localizedMessage)
                 }
             }
         }
@@ -55,20 +51,15 @@ class NewsViewModel @Inject constructor(
 
     private fun getNews(categoryId: Int){
         viewModelScope.launch {
-            newsRepository.getNews(categoryId).collectLatest {
-                when(it){
-                    is NetworkResult.Loading -> {
-                        _newsUiStateUiState.value =
-                            _newsUiStateUiState.value.copy(isLoading = true)
-                    }
-                    is NetworkResult.Success -> {
-                        _newsUiStateUiState.value =
-                            _newsUiStateUiState.value.copy(isLoading = false, news = it.data)
-                    }
-                    is NetworkResult.Error -> {
-                        _newsUiStateUiState.value =
-                            _newsUiStateUiState.value.copy(isLoading = false, error = it.errorMessage)
-                    }
+            _newsUiStateUiState.value =
+                _newsUiStateUiState.value.copy(isLoading = true)
+            newsRepository.getNews(categoryId).collectLatest { result ->
+                result.onSuccess {
+                    _newsUiStateUiState.value =
+                        _newsUiStateUiState.value.copy(isLoading = false, news = it)
+                }.onFailure {
+                    _newsUiStateUiState.value =
+                        _newsUiStateUiState.value.copy(isLoading = false, error = it.localizedMessage)
                 }
             }
         }

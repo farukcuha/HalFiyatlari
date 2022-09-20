@@ -32,6 +32,7 @@ import com.pandorina.hal_fiyatlari.domain.model.price.Price
 import com.pandorina.hal_fiyatlari.presentation.component.*
 import com.pandorina.hal_fiyatlari.presentation.theme.black
 import com.pandorina.hal_fiyatlari.presentation.theme.white
+import kotlin.math.max
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Preview
@@ -40,8 +41,7 @@ fun PricesScreen(
     navController: NavController? = null,
 ) {
     val viewModel: PricesViewModel = hiltViewModel()
-    val pricesState = viewModel.pricesUiState.value
-    val datesState = viewModel.datesUiState.value
+    val uiState = viewModel.uiState.value
     Scaffold(
         topBar = {
             CustomTopAppBar(
@@ -55,17 +55,17 @@ fun PricesScreen(
         },
         content = {
             Column {
-                CurrentDate(dates = datesState.dates){
+                CurrentDate(dates = uiState.dates){
                     viewModel.getPrices(viewModel.cityId.value, it)
                 }
-                pricesState.prices?.let { prices ->
+                uiState.prices?.let { prices ->
                     LazyColumn {
                         items(prices.size) {
                             PriceItem(prices[it])
                         }
                     }
                 }
-                if (pricesState.isLoading) {
+                if (uiState.isLoading) {
                     LoadingBar(modifier = Modifier.align(CenterHorizontally))
                 }
             }
@@ -101,7 +101,7 @@ fun CurrentDate(
         DropdownMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().heightIn(max = 360.dp)
         ) {
             dates?.forEachIndexed { index, s ->
                 DropdownMenuItem(

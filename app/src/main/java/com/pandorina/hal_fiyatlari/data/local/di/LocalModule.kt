@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.pandorina.hal_fiyatlari.data.local.EarningsDao
 import com.pandorina.hal_fiyatlari.data.local.AppDatabase
+import com.pandorina.hal_fiyatlari.data.local.EarningInputPastsDao
 import com.pandorina.hal_fiyatlari.data.local.FavoriteCitiesDao
 import dagger.Module
 import dagger.Provides
@@ -44,5 +45,13 @@ object LocalModule {
         appDatabase: AppDatabase
     ): FavoriteCitiesDao {
         return appDatabase.getFavoriteCitiesDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideEarningInputPastsDao(
+        appDatabase: AppDatabase
+    ): EarningInputPastsDao {
+        return  appDatabase.getEarningInputPastsDao()
     }
 }

@@ -48,7 +48,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose
+        kotlinCompilerExtensionVersion = "1.3.0"
     }
 
     packagingOptions {
@@ -66,6 +66,12 @@ dependencies {
     implementation("com.google.firebase:firebase-database-ktx:20.0.5")
     implementation("com.google.firebase:firebase-firestore:24.0.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.2")
+
+    implementation (platform("com.google.firebase:firebase-bom:30.4.0"))
+    implementation("com.google.firebase:firebase-config-ktx")
+    implementation("com.google.firebase:firebase-analytics-ktx")
+
+    implementation("com.google.firebase:firebase-messaging-ktx:23.0.8")
 
     implementationAppLibraries()
     implementationTestLibraries()

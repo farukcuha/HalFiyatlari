@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>info_text</key>
+        <value></value>
+    </entry>
+    <entry>
+        <key>is_prices_active</key>
+        <value>true</value>
+    </entry>
+    <entry>
+        <key>is_earnings_active</key>
+        <value>true</value>
+    </entry>
+    <entry>
+        <key>is_news_active</key>
+        <value>true</value>
+    </entry>
+    <entry>
+        <key>is_currency_active</key>
+        <value>true</value>
+    </entry>
+</defaultsMap>

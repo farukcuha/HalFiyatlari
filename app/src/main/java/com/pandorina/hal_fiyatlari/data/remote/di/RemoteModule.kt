@@ -21,6 +21,7 @@ import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.client.plugins.observer.*
+import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import javax.inject.Singleton
@@ -34,10 +35,9 @@ object RemoteModule{
     fun provideHttpClient(): HttpClient {
         return HttpClient(Android){
             defaultRequest {
-                host = "halfiyatlariapi-env-2.eba-dht3rpjn.us-east-1.elasticbeanstalk.com"
-                url {
-                    protocol = URLProtocol.HTTP
-                }
+                host = "halfiyatlariapi-env-2.eba-r47irhmd.us-east-1.elasticbeanstalk.com"
+                url { protocol = URLProtocol.HTTP }
+                basicAuth("farukcuhalfiyatlari", "halfiyatlariapi2023")
             }
 
             install(ContentNegotiation){

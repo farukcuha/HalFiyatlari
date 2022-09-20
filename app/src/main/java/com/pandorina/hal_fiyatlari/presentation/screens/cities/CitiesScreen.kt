@@ -36,7 +36,8 @@ import com.pandorina.hal_fiyatlari.presentation.component.CoilImage
 import com.pandorina.hal_fiyatlari.presentation.component.CustomTopAppBar
 import com.pandorina.hal_fiyatlari.presentation.component.MenuAction
 import com.pandorina.hal_fiyatlari.presentation.component.MenuIcon
-import com.pandorina.hal_fiyatlari.presentation.navigation.NavGraph
+import com.pandorina.hal_fiyatlari.presentation.navigation.NavigationRoutes
+import com.pandorina.hal_fiyatlari.presentation.screens.cities.components.CityView
 import com.pandorina.hal_fiyatlari.presentation.theme.city_foreground
 import kotlinx.coroutines.*
 
@@ -47,7 +48,7 @@ fun CitiesScreen(
     navController: NavController
 ) {
     val viewModel: CitiesViewModel = hiltViewModel()
-    val state = viewModel.citiesUiState.value
+    val state = viewModel.uiState.value
     val listState = rememberLazyListState()
 
     Scaffold(
@@ -73,13 +74,23 @@ fun CitiesScreen(
                         items(cities.size, key = { cities[it]?.id ?: "" } ) {
                             CityView(
                                 city = cities[it] ?: return@items,
-                                viewModel = viewModel,
                                 listState = listState,
                                 modifier = Modifier
                                     .animateItemPlacement(
-                                        animationSpec = tween(500))) { city ->
+                                        animationSpec = tween(500)),
+                            onClickFavoriteButton = { city ->
+                                if (city.isFavorite) viewModel.deleteFavoriteCity(city.id ?: return@CityView)
+                                else viewModel.insertFavoriteCity(
+                                    CityEntity(
+                                        id = city.id!!,
+                                        title = city.title,
+                                        imageUrl = city.imageUrl,
+                                        isFavorite = true
+                                    )
+                                )
+                            }) { city ->
                                 navController.navigate(
-                                    "${NavGraph.Prices.route}/${city?.id}/${city?.title}"
+                                    "${NavigationRoutes.Prices.route}/${city.id}/${city.title}"
                                 )
                             }
                         }
@@ -96,91 +107,3 @@ fun CitiesScreen(
     )
 }
 
-@OptIn(ExperimentalMaterialApi::class)
-@Composable
-fun CityView(
-    city: City,
-    viewModel: CitiesViewModel,
-    listState: LazyListState,
-    modifier: Modifier,
-    navigate: (City?) -> Unit
-) {
-    val coroutineScope = rememberCoroutineScope()
-
-    Card(
-        shape = RoundedCornerShape(16.dp),
-        onClick = {
-            navigate(city)
-        },
-        modifier = modifier
-            .height(152.dp)
-            .padding(4.dp)
-    ) {
-        Box {
-            CoilImage(imageUrl = city.imageUrl)
-            Box(
-                modifier = Modifier
-                    .background(color = city_foreground)
-                    .fillMaxSize()
-            )
-            Text(
-                text = "${city.title} Hal Fiyatları",
-                fontSize = 18.sp,
-                color = Color.White,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .padding(16.dp),
-                textAlign = TextAlign.Center,
-            )
-            FavoriteButton(
-                modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(8.dp),
-                isFavorite = city.isFavorite,
-                onClick = {
-                    if (city.isFavorite) viewModel.deleteFavoriteCity(city.id ?: return@FavoriteButton)
-                    else viewModel.insertFavoriteCity(CityEntity(
-                        id = city.id!!,
-                        title = city.title,
-                        imageUrl = city.imageUrl,
-                        isFavorite = true
-                    ))
-                    coroutineScope.launch {
-                        listState.animateScrollToItem(index = 0)
-                    }
-                }
-            )
-        }
-    }
-}
-
-@Composable
-@Preview
-fun FavoriteButton(
-    modifier: Modifier = Modifier,
-    isFavorite: Boolean = false,
-    onClick: () -> Unit = {}
-) {
-    Box(
-        modifier = modifier
-            .clip(CircleShape)
-            .clickable {
-                onClick()
-            }
-            .padding(4.dp)
-    ) {
-        if (isFavorite) FavoriteIcon(icon = Icons.Default.Favorite)
-        else FavoriteIcon(icon = Icons.Default.FavoriteBorder)
-    }
-}
-
-@Composable
-fun FavoriteIcon(
-    icon: ImageVector
-) {
-    Icon(icon,
-        contentDescription = "",
-        tint = Color.White,
-        modifier = Modifier.size(24.dp))
-}

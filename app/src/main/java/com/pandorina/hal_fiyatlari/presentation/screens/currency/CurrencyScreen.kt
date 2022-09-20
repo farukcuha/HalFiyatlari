@@ -2,22 +2,25 @@ package com.pandorina.hal_fiyatlari.presentation.screens.currency
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.pandorina.hal_fiyatlari.R
 import com.pandorina.hal_fiyatlari.presentation.component.*
+import com.pandorina.hal_fiyatlari.presentation.screens.currency.components.CurrencyItem
 
 @Composable
 fun CurrencyScreen(
     navController: NavController
 ) {
-    var isLoading: Boolean by remember {
-        mutableStateOf(true)
-    }
+    val viewModel: CurrencyViewModel = hiltViewModel()
+    val uiState = viewModel.uiState.value
+
     Scaffold(
         topBar = {
             CustomTopAppBar(
@@ -33,16 +36,18 @@ fun CurrencyScreen(
             Box(
                 modifier = Modifier.fillMaxSize()
             ) {
-                if (isLoading){
+                if (uiState.isLoading){
                     LoadingBar(modifier = Modifier.align(Alignment.Center))
                 }
-                CustomWebView(
-                    url = "https://kur.doviz.com/",
-                    onBack = { navController.popBackStack() },
-                    isLoading = {
-                        isLoading = it
+                uiState.currencies?.let { currencies ->
+                    LazyColumn(
+                        modifier = Modifier.fillMaxSize()
+                    ){
+                        items(currencies.size){
+                            CurrencyItem(currencies[it])
+                        }
                     }
-                )
+                }
             }
         }
     )

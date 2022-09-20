@@ -24,7 +24,9 @@ data class CityDto(
         return City(
             id = id,
             title = title,
-            imageUrl = imageUrl
+            imageUrl = imageUrl,
+            isActive = true,
+            priority = priority
         )
     }
 }

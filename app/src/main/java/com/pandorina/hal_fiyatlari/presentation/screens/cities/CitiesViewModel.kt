@@ -1,39 +1,35 @@
 package com.pandorina.hal_fiyatlari.presentation.screens.cities
 
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.pandorina.hal_fiyatlari.core.BaseViewModel
 import com.pandorina.hal_fiyatlari.data.local.entity.CityEntity
 import com.pandorina.hal_fiyatlari.domain.model.city.City
+import com.pandorina.hal_fiyatlari.domain.repository.CitiesRepository
 import com.pandorina.hal_fiyatlari.domain.repository.FavoriteCitiesRepository
-import com.pandorina.hal_fiyatlari.domain.repository.PricesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class CitiesViewModel @Inject constructor(
-    private val pricesRepository: PricesRepository,
+    private val citiesRepository: CitiesRepository,
     private val favoriteCitiesRepository: FavoriteCitiesRepository,
-): ViewModel(){
-    private val _citiesUiState = mutableStateOf(CitiesUiState())
-    val citiesUiState: State<CitiesUiState> = _citiesUiState
+): BaseViewModel<CitiesUiState>(CitiesUiState()){
 
     init {
-        viewModelScope.launch {
-            _citiesUiState.value = CitiesUiState(isLoading = true)
-            /*pricesRepository.getCities().onSuccess {
-                reorderByFavorites(it.map { cityDto -> cityDto.toDomain() })
-            }.onFailure {
-                _citiesUiState.value = CitiesUiState(isLoading = false, error = it.localizedMessage)
-            }*/
+        launchViewModelScope {
+            _uiState.value = CitiesUiState(isLoading = true)
+            citiesRepository.getCities().collectLatest { result ->
+                result.onSuccess {
+                    reorderByFavorites(it)
+                }.onFailure {
+                    _uiState.value = _uiState.value.copy(isLoading = false, error = it.localizedMessage)
+                }
+            }
         }
     }
 
     private fun reorderByFavorites(list: List<City>) {
-        viewModelScope.launch {
+        launchViewModelScope {
             favoriteCitiesRepository.getFavoriteCities().collectLatest {
                 val reorderedList = mutableListOf<City>()
                 reorderedList.addAll(it.map { city -> city.toCity() })
@@ -41,19 +37,19 @@ class CitiesViewModel @Inject constructor(
                     val item = reorderedList.find { it.id == city.id }
                     if (item == null) reorderedList.add(city)
                 }
-                _citiesUiState.value = CitiesUiState(isLoading = false, cities = reorderedList)
+                _uiState.value = _uiState.value.copy(isLoading = false, cities = reorderedList)
             }
         }
     }
 
     fun insertFavoriteCity(cityEntity: CityEntity){
-        viewModelScope.launch {
+        launchViewModelScope {
             favoriteCitiesRepository.insertFavoriteCity(cityEntity)
         }
     }
 
     fun deleteFavoriteCity(cityId: String){
-        viewModelScope.launch {
+        launchViewModelScope {
             favoriteCitiesRepository.deleteFavoriteCity(cityId)
         }
     }

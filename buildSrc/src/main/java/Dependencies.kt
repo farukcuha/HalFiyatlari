@@ -17,7 +17,7 @@ fun DependencyHandler.implementationCompose(){
         "androidx.compose.material:material:${Versions.compose}",
         "androidx.activity:activity-compose:${Versions.activityCompose}",
         "androidx.navigation:navigation-compose:${Versions.navigation}",
-        "androidx.constraintlayout:constraintlayout-compose:${Versions.compose}",
+        "androidx.constraintlayout:constraintlayout-compose:1.0.1",
         "androidx.compose.material:material-icons-extended:${Versions.compose}",
         "com.google.accompanist:accompanist-pager:0.23.1",
         "com.airbnb.android:lottie-compose:${Versions.lottie}"

@@ -4,6 +4,8 @@ import android.app.DatePickerDialog
 import android.content.Context
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
@@ -20,10 +22,13 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.pandorina.hal_fiyatlari.R
 import com.pandorina.hal_fiyatlari.data.local.entity.EarningEntity
+import com.pandorina.hal_fiyatlari.data.local.entity.EarningInputPastEntity
 import com.pandorina.hal_fiyatlari.domain.model.earning.Earning
 import com.pandorina.hal_fiyatlari.presentation.component.CustomTopAppBar
 import com.pandorina.hal_fiyatlari.presentation.component.MenuAction
 import com.pandorina.hal_fiyatlari.presentation.component.MenuIcon
+import com.pandorina.hal_fiyatlari.presentation.screens.earnings.components.Chip
+import com.pandorina.hal_fiyatlari.presentation.screens.earnings.components.ChipGroup
 import com.pandorina.hal_fiyatlari.presentation.screens.earnings.components.EarningButton
 import com.pandorina.hal_fiyatlari.presentation.screens.earnings.components.EarningTextField
 import com.pandorina.hal_fiyatlari.presentation.theme.black
@@ -42,6 +47,7 @@ fun AddEarningScreen(
 ) {
     val context = LocalContext.current
     val viewModel: AddEarningViewModel = hiltViewModel()
+    val uiState = viewModel.uiState.value
     Scaffold(
         topBar = {
             CustomTopAppBar(
@@ -58,6 +64,7 @@ fun AddEarningScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(8.dp)
+                    .verticalScroll(rememberScrollState())
             ) {
                 var name by remember { mutableStateOf(earning?.name ?: "") }
                 var isErrorName by remember { mutableStateOf(false) }
@@ -117,36 +124,86 @@ fun AddEarningScreen(
                     onValueChange = { name = it },
                     text = name,
                     keyboardType = KeyboardType.Text,
-                    isError = isErrorName
+                    isError = isErrorName,
+                    onClickClear = { name = "" }
                 )
+                AnimatedVisibility(visible = uiState.nameInputPasts.isNotEmpty()) {
+                    ChipGroup(
+                        modifier = Modifier.padding(top = 8.dp),
+                        labels = uiState.nameInputPasts,
+                        onClickClear = { viewModel.deleteInputPasts(EarningInputPastEntity.Field.NAME) }
+                    ){
+                        name = it
+                    }
+                }
                 EarningTextField(
                     label = "Birim Fiyat",
                     onValueChange = { unitPrice = it },
                     text = unitPrice,
                     keyboardType = KeyboardType.Number,
-                    isError = isErrorUnitPrice
+                    isError = isErrorUnitPrice,
+                    onClickClear = { unitPrice = "" }
                 )
+                AnimatedVisibility(visible = uiState.unitPriceInputPasts.isNotEmpty()) {
+                    ChipGroup(
+                        modifier = Modifier.padding(top = 8.dp),
+                        labels = uiState.unitPriceInputPasts,
+                        onClickClear = { viewModel.deleteInputPasts(EarningInputPastEntity.Field.UNIT_PRICE) }
+                    ){
+                        unitPrice = it
+                    }
+                }
                 EarningTextField(
                     label = "Toplam Kasa Sayısı",
                     onValueChange = { totalCaseCount = it },
                     text = totalCaseCount,
                     keyboardType = KeyboardType.Number,
-                    isError = isErrorTotalCaseCount
+                    isError = isErrorTotalCaseCount,
+                    onClickClear = { totalCaseCount = "" }
                 )
+                AnimatedVisibility(visible = uiState.totalCaseCountInputPasts.isNotEmpty()) {
+                    ChipGroup(
+                        modifier = Modifier.padding(top = 8.dp),
+                        labels = uiState.totalCaseCountInputPasts,
+                        onClickClear = { viewModel.deleteInputPasts(EarningInputPastEntity.Field.TOTAL_CASE_COUNT) }
+                    ){
+                        totalCaseCount = it
+                    }
+                }
                 EarningTextField(
                     label = "Kasa Kaç Kilogram?",
                     onValueChange = { caseWeight = it },
                     text = caseWeight,
                     keyboardType = KeyboardType.Number,
-                    isError = isErrorCaseWeight
+                    isError = isErrorCaseWeight,
+                    onClickClear = { caseWeight = "" }
                 )
+                AnimatedVisibility(visible = uiState.caseWeightInputPasts.isNotEmpty()) {
+                    ChipGroup(
+                        modifier = Modifier.padding(top = 8.dp),
+                        labels = uiState.caseWeightInputPasts,
+                        onClickClear = { viewModel.deleteInputPasts(EarningInputPastEntity.Field.CASE_WEIGHT) }
+                    ){
+                        caseWeight = it
+                    }
+                }
                 EarningTextField(
                     label = "Komisyon Oranı (Yüzde)",
                     onValueChange = { commissionPercentage = it },
                     text = commissionPercentage,
                     keyboardType = KeyboardType.Number,
-                    isError = isErrorCommissionPercentage
+                    isError = isErrorCommissionPercentage,
+                    onClickClear = { commissionPercentage = "" }
                 )
+                AnimatedVisibility(visible = uiState.commissionPercentageInputPasts.isNotEmpty()) {
+                    ChipGroup(
+                        modifier = Modifier.padding(top = 8.dp),
+                        labels = uiState.commissionPercentageInputPasts,
+                        onClickClear = { viewModel.deleteInputPasts(EarningInputPastEntity.Field.COMMISSION_PERCENTAGE) }
+                    ){
+                        commissionPercentage = it
+                    }
+                }
                 OutlinedButton(
                     onClick = {
                         context.datePickerDialog { millis ->

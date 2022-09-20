@@ -17,20 +17,20 @@ import com.pandorina.hal_fiyatlari.presentation.screens.prices.PricesScreen
 
 @Composable
 fun MainNavController(navController: NavHostController){
-    NavHost(navController = navController, startDestination = NavGraph.Home.route){
-        composable(NavGraph.Home.route){ HomeScreen(navController) }
-        composable(NavGraph.Cities.route){ CitiesScreen(navController) }
+    NavHost(navController = navController, startDestination = NavigationRoutes.Home.route){
+        composable(NavigationRoutes.Home.route){ HomeScreen(navController) }
+        composable(NavigationRoutes.Cities.route){ CitiesScreen(navController) }
         composable(
-            "${NavGraph.Prices.route}/{cityId}/{title}",
+            "${NavigationRoutes.Prices.route}/{cityId}/{title}",
             arguments = listOf(
                 navArgument("cityId") { type = NavType.StringType },
                 navArgument("title") { type = NavType.StringType }
             )
         ){ PricesScreen(navController) }
-        composable(NavGraph.Currency.route){ CurrencyScreen(navController) }
-        composable(NavGraph.News.route){ NewsScreen(navController) }
-        composable(NavGraph.Earnings.route){ EarningsScreen(navController) }
-        composable(NavGraph.AddEarning.route){ AddEarningScreen(navController) }
-        composable(NavGraph.WebScreen.route){ WebViewScreen(navController) }
+        composable(NavigationRoutes.Currency.route){ CurrencyScreen(navController) }
+        composable(NavigationRoutes.News.route){ NewsScreen(navController) }
+        composable(NavigationRoutes.Earnings.route){ EarningsScreen(navController) }
+        composable(NavigationRoutes.AddEarning.route){ AddEarningScreen(navController) }
+        composable(NavigationRoutes.WebScreen.route){ WebViewScreen(navController) }
     }
 }

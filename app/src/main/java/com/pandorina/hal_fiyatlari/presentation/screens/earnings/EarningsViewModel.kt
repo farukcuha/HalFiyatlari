@@ -5,6 +5,8 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.pandorina.hal_fiyatlari.core.BaseUiState
+import com.pandorina.hal_fiyatlari.core.BaseViewModel
 import com.pandorina.hal_fiyatlari.data.local.EarningsDao
 import com.pandorina.hal_fiyatlari.domain.model.earning.Earning
 import com.pandorina.hal_fiyatlari.domain.repository.EarningRepository
@@ -16,24 +18,10 @@ import javax.inject.Inject
 @HiltViewModel
 class EarningsViewModel @Inject constructor(
     private val earningRepository: EarningRepository
-): ViewModel() {
-
-    private var _earningsState = mutableStateOf<List<Earning>>(emptyList())
-    val earningsState: State<List<Earning>> = _earningsState
-
-    private var _dailySumState = mutableStateOf<Float?>(null)
-    val dailySumState: State<Float?> = _dailySumState
-
-    private var _weeklySumState = mutableStateOf<Float?>(null)
-    val weeklySumState: State<Float?> = _weeklySumState
-
-    private var _monthlySumState = mutableStateOf<Float?>(null)
-    val monthlySumState: State<Float?> = _monthlySumState
-
-    private var _totalSumState = mutableStateOf<Float?>(null)
-    val totalSumState: State<Float?> = _totalSumState
+): BaseViewModel<EarningsUiState>(EarningsUiState()) {
 
     init {
+        _uiState.value = EarningsUiState(isLoading = true)
         getPrices()
         getDailySum()
         getWeeklySum()
@@ -42,49 +30,64 @@ class EarningsViewModel @Inject constructor(
     }
 
     fun getPrices() {
-        viewModelScope.launch {
+        launchViewModelScope {
             earningRepository.getPrices().collectLatest {
-                _earningsState.value = it.map { earningEntity ->
-                    earningEntity.toEarning()
-                }
+                _uiState.value = _uiState.value.copy(
+                    isLoading = false,
+                    earnings = it.map { earningEntity ->
+                        earningEntity.toEarning()
+                    }
+                )
             }
         }
     }
 
-    fun getDailySum() {
-        viewModelScope.launch {
+    private fun getDailySum() {
+        launchViewModelScope {
             earningRepository.getDailySum().collectLatest {
-                _dailySumState.value = it
+                _uiState.value = _uiState.value.copy(
+                    isLoading = false,
+                    dailySum = it
+                )
             }
         }
     }
 
     private fun getWeeklySum(){
-        viewModelScope.launch {
+        launchViewModelScope {
             earningRepository.getWeeklySum().collectLatest {
-                _weeklySumState.value = it
+                _uiState.value = _uiState.value.copy(
+                    isLoading = false,
+                    weeklySum = it
+                )
             }
         }
     }
 
     private fun getMonthlySum(){
-        viewModelScope.launch {
+        launchViewModelScope {
             earningRepository.getMonthlySum().collectLatest {
-                _monthlySumState.value = it
+                _uiState.value = _uiState.value.copy(
+                    isLoading = false,
+                    monthlySum = it
+                )
             }
         }
     }
 
     private fun getTotalSum() {
-        viewModelScope.launch {
+        launchViewModelScope {
             earningRepository.getTotalSum().collectLatest {
-                _totalSumState.value = it
+                _uiState.value = _uiState.value.copy(
+                    isLoading = false,
+                    totalSum = it
+                )
             }
         }
     }
 
     fun deleteEarning(earningId: Int){
-        viewModelScope.launch {
+        launchViewModelScope {
             earningRepository.deleteEarning(earningId)
         }
     }
