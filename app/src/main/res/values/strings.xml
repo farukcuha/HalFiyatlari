@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Hal Fiyatları</string>
     <string name="home">Anasayfa</string>
-    <string name="settings">Ayarlar</string>
+    <string name="share">Uygulamayı Paylaş</string>
     <string name="prices">Hal Fiyatları</string>
     <string name="earnings">Kazanç Kayıtlarım</string>
     <string name="news">Son Dakika Haberleri</string>

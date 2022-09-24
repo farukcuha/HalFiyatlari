@@ -1,24 +1,26 @@
 package com.pandorina.hal_fiyatlari.presentation.screens.home
 
 import android.annotation.SuppressLint
-import android.util.Log
+import android.content.Intent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.res.stringResource
-import com.pandorina.hal_fiyatlari.R
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat.startActivity
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.pandorina.hal_fiyatlari.R
 import com.pandorina.hal_fiyatlari.presentation.component.*
 import com.pandorina.hal_fiyatlari.presentation.navigation.NavigationRoutes
 import com.pandorina.hal_fiyatlari.presentation.screens.home.components.CityPhoto
 import com.pandorina.hal_fiyatlari.presentation.screens.home.components.InfoDialog
 import com.pandorina.hal_fiyatlari.presentation.screens.home.components.OptionCardItem
-import com.pandorina.hal_fiyatlari.presentation.theme.black
+
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -27,14 +29,19 @@ fun HomeScreen(
 ) {
     val viewModel: HomeViewModel = hiltViewModel()
     val uiState = viewModel.photoUiState.value
+    val context = LocalContext.current
 
     Scaffold(
         topBar = {
             CustomTopAppBar(
                 title = stringResource(id = R.string.home),
                 actions = {
-                    MenuIcon(action = MenuAction.Settings) {
-                        Log.d("action", "clicked_settings")
+                    MenuIcon(action = MenuAction.Share) {
+                        Intent(Intent.ACTION_SEND).apply {
+                            type = "text/plain"
+                            putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.pandorina.hal_fiyatlari")
+                            context.startActivity(Intent.createChooser(this, "Uygulamayı Paylaş!"))
+                        }
                     }
                 }
             )

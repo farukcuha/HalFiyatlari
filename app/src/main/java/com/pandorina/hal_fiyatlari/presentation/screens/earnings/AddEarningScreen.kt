@@ -24,6 +24,7 @@ import com.pandorina.hal_fiyatlari.R
 import com.pandorina.hal_fiyatlari.data.local.entity.EarningEntity
 import com.pandorina.hal_fiyatlari.data.local.entity.EarningInputPastEntity
 import com.pandorina.hal_fiyatlari.domain.model.earning.Earning
+import com.pandorina.hal_fiyatlari.presentation.component.CustomDialog
 import com.pandorina.hal_fiyatlari.presentation.component.CustomTopAppBar
 import com.pandorina.hal_fiyatlari.presentation.component.MenuAction
 import com.pandorina.hal_fiyatlari.presentation.component.MenuIcon
@@ -48,6 +49,10 @@ fun AddEarningScreen(
     val context = LocalContext.current
     val viewModel: AddEarningViewModel = hiltViewModel()
     val uiState = viewModel.uiState.value
+    var showDeleteDialog by remember {
+        mutableStateOf(false)
+    }
+
     Scaffold(
         topBar = {
             CustomTopAppBar(
@@ -268,10 +273,26 @@ fun AddEarningScreen(
                         text = "Sil",
                         modifier = Modifier.padding(top = 8.dp)
                     ) {
-                        viewModel.deleteEarning(earning.id!!)
-                        navController?.popBackStack()
+                        showDeleteDialog = true
                     }
                 }
+
+                if (showDeleteDialog) CustomDialog(
+                    title = "Sil",
+                    text = "Silmek istediğinize emin misiniz?",
+                    confirmButtonText = "Sil",
+                    onConfirm = {
+                        viewModel.deleteEarning(earning?.id!!)
+                        navController?.popBackStack()
+                        showDeleteDialog = false
+                    },
+                    confirmButtonColor = Color.Red,
+                    dismissButtonText = "İptal",
+                    dismissButtonColor = black,
+                    onDismiss = {
+                        showDeleteDialog = false
+                    }
+                )
             }
         }
     )

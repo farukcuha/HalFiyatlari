@@ -4,7 +4,12 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Hal_Fiyatlari.iml" filepath="$PROJECT_DIR$/.idea/modules/Hal_Fiyatlari.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Hal_Fiyatlari.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Hal_Fiyatlari.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Hal_Fiyatlari.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Hal_Fiyatlari.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Hal_Fiyatlari.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Hal_Fiyatlari.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Hal_Fiyatlari.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Hal_Fiyatlari.app.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Hal_Fiyatlari.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/Hal_Fiyatlari.buildSrc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Hal_Fiyatlari.buildSrc.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Hal_Fiyatlari.buildSrc.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Hal_Fiyatlari.buildSrc.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Hal_Fiyatlari.buildSrc.test.iml" />
     </modules>
   </component>
 </project>

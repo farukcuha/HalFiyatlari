@@ -6,14 +6,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class PriceDto(
-    @SerialName("cityId")
-    val cityId: String? = null,
-    @SerialName("id")
-    val id: String? = null,
-    @SerialName("lastUpdatedTime")
-    val lastUpdatedTime: Long? = null,
-    @SerialName("priceDate")
-    val priceDate: String? = null,
     @SerialName("name")
     val name: String? = null,
     @SerialName("icon")

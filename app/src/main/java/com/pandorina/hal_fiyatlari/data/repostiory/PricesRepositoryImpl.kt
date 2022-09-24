@@ -1,44 +1,41 @@
 package com.pandorina.hal_fiyatlari.data.repostiory
 
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.Source
-import com.pandorina.hal_fiyatlari.data.remote.price.dto.PriceDto
-import com.pandorina.hal_fiyatlari.domain.model.price.PriceDate
+import com.pandorina.hal_fiyatlari.data.remote.price.PricesService
+import com.pandorina.hal_fiyatlari.data.remote.price.dto.PriceResponseDto
+import com.pandorina.hal_fiyatlari.domain.model.price.PriceResponse
 import com.pandorina.hal_fiyatlari.domain.repository.PricesRepository
-import kotlinx.coroutines.tasks.await
+import com.pandorina.hal_fiyatlari.util.safeApiCall
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.channelFlow
+import kotlinx.coroutines.flow.collectLatest
 
 class PricesRepositoryImpl(
-    private val firebaseFirestore: FirebaseFirestore
+    private val pricesService: PricesService
 ): PricesRepository {
 
-    override suspend fun getPriceDates(cityId: String?): Result<List<PriceDate>> {
-        return try {
-            val result = firebaseFirestore
-                .collection("price_dates")
-                .whereEqualTo("cityId", cityId)
-                .orderBy("lastUpdatedTime", Query.Direction.DESCENDING)
-                .get(Source.SERVER)
-                .await()
-                .toObjects(PriceDate::class.java)
-            Result.success(result)
-        } catch (e: Exception){
-            Result.failure(e)
+    override suspend fun getPriceDates(cityId: String?): Flow<Result<List<String>>> = channelFlow {
+        safeApiCall<List<String>> {
+            pricesService.getPriceDates(cityId).call
+        }.collectLatest { result ->
+            result.onSuccess {
+                trySend(Result.success(
+                    it
+                ))
+            }.onFailure {
+                trySend(Result.failure(it))
+            }
         }
     }
 
-    override suspend fun getPricesByDate(cityId: String?, date: String?): Result<List<PriceDto>> {
-        return try {
-            val result = firebaseFirestore
-                .collection("prices")
-                .whereEqualTo("cityId", cityId)
-                .whereEqualTo("priceDate", date)
-                .get(Source.SERVER)
-                .await()
-                .toObjects(PriceDto::class.java)
-            Result.success(result)
-        } catch (e: Exception){
-            Result.failure(e)
+    override suspend fun getPricesByDate(cityId: String?, date: String?): Flow<Result<PriceResponse>> = channelFlow {
+        safeApiCall<PriceResponseDto> {
+            pricesService.getPrices(cityId, date).call
+        }.collectLatest { result ->
+            result.onSuccess {
+                trySend(Result.success(it.toDomain()))
+            }.onFailure {
+                trySend(Result.failure(it))
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ import com.pandorina.hal_fiyatlari.data.remote.city.CitiesService
 import com.pandorina.hal_fiyatlari.data.remote.currency.CurrencyService
 import com.pandorina.hal_fiyatlari.data.remote.news.NewsService
 import com.pandorina.hal_fiyatlari.data.remote.photo.PhotoService
+import com.pandorina.hal_fiyatlari.data.remote.price.PricesService
 import com.pandorina.hal_fiyatlari.data.repostiory.*
 import com.pandorina.hal_fiyatlari.domain.repository.*
 import dagger.Module
@@ -37,9 +38,9 @@ object RepositoryModule{
     @Provides
     @Singleton
     fun providePricesRepository(
-        firebaseFirestore: FirebaseFirestore
+        pricesService: PricesService
     ): PricesRepository{
-        return PricesRepositoryImpl(firebaseFirestore)
+        return PricesRepositoryImpl(pricesService)
     }
 
     @Provides

@@ -6,13 +6,10 @@ interface PricesService {
     companion object {
         private const val ROUTE_PRICES = "/prices"
         const val ROUTE_FETCH_PRICES = "$ROUTE_PRICES/fetch"
-        const val ROUTE_CITIES = "$ROUTE_PRICES/cities"
         const val ROUTE_DATES = "$ROUTE_PRICES/dates"
     }
 
     suspend fun getPrices(cityId: String?, date: String?): HttpResponse
-
-    suspend fun getCities(): HttpResponse
 
     suspend fun getPriceDates(cityId: String?): HttpResponse
 }

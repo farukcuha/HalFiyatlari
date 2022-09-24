@@ -6,6 +6,7 @@ import androidx.lifecycle.*
 import com.pandorina.hal_fiyatlari.core.BaseViewModel
 import com.pandorina.hal_fiyatlari.domain.repository.PricesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -33,12 +34,14 @@ class PricesViewModel @Inject constructor(
     private fun getDates(cityId: String?) {
         launchViewModelScope {
             _uiState.value = PricesUiState(isLoading = true)
-            pricesRepository.getPriceDates(cityId).onSuccess {
-                val dates = it.map { it.date }
-                _uiState.value = _uiState.value.copy(isLoading = false, dates = dates)
-                getPrices(cityId, uiState.value.dates?.firstOrNull())
-            }.onFailure {
-                _uiState.value = _uiState.value.copy(isLoading = false, error = it.localizedMessage)
+            pricesRepository.getPriceDates(cityId).collectLatest { result ->
+                result.onSuccess { dates ->
+                    _uiState.value = _uiState.value.copy(isLoading = false, dates = dates)
+                    getPrices(cityId, uiState.value.dates?.firstOrNull())
+                }
+                result.onFailure {
+                    _uiState.value = _uiState.value.copy(isLoading = false, error = it.localizedMessage)
+                }
             }
         }
     }
@@ -46,11 +49,13 @@ class PricesViewModel @Inject constructor(
     fun getPrices(cityId: String?, date: String?){
         job = viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isLoading = true, prices = emptyList())
-            pricesRepository.getPricesByDate(cityId, date).onSuccess {
-                val prices = it.map { priceDto -> priceDto.toDomain() }
-                _uiState.value = _uiState.value.copy(isLoading = false, prices = prices)
-            }.onFailure {
-                _uiState.value = _uiState.value.copy(isLoading = false, error = it.localizedMessage)
+            pricesRepository.getPricesByDate(cityId, date).collectLatest { result ->
+                result.onSuccess {
+                    _uiState.value = _uiState.value.copy(isLoading = false, prices = it.prices)
+                }
+                result.onFailure {
+                    _uiState.value = _uiState.value.copy(isLoading = false, error = it.localizedMessage)
+                }
             }
         }
     }

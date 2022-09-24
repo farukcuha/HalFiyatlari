@@ -12,8 +12,6 @@ data class CityDto(
     val title: String,
     @SerialName("imageUrl")
     val imageUrl: String,
-    @SerialName("srcUrl")
-    val srcUrl: String,
     @SerialName("isActive")
     val isActive: Boolean? = null,
     @SerialName("priority")
