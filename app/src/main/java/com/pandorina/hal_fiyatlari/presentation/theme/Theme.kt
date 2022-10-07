@@ -20,7 +20,7 @@ private val LightColorPalette = lightColors(
 
 @Composable
 fun KotlinDslExampleTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {

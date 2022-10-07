@@ -1,15 +1,19 @@
 package com.pandorina.hal_fiyatlari
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.rememberNavController
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfig
@@ -17,6 +21,12 @@ import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 import com.pandorina.hal_fiyatlari.presentation.navigation.MainNavController
 import com.pandorina.hal_fiyatlari.presentation.theme.KotlinDslExampleTheme
 import dagger.hilt.android.AndroidEntryPoint
+import com.google.android.play.core.install.model.ActivityResult
+import com.pandorina.hal_fiyatlari.util.AppUpdateManager
+import com.pandorina.hal_fiyatlari.util.InterstitialAdManager
+import com.pandorina.hal_fiyatlari.util.showToast
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -41,11 +51,30 @@ class MainActivity : ComponentActivity() {
         remoteConfig.setConfigSettingsAsync(configSettings)
         remoteConfig.setDefaultsAsync(R.xml.remote_config_defaults)
         remoteConfig.fetchAndActivate().addOnCompleteListener { task ->
-            if (task.isSuccessful){
+            if (task.isSuccessful) {
                 Log.d("remote_config", "fetched")
             } else Log.d("remote_config", "fetching is failed")
         }
+
+        AppUpdateManager().checkUpdateInfo(this)
+        InterstitialAdManager.initialize(this)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == AppUpdateManager.UPDATE_REQUEST) {
+            when (resultCode) {
+                Activity.RESULT_OK -> {
+                    applicationContext.showToast("ok")
+                }
+                Activity.RESULT_CANCELED -> {
+                    applicationContext.showToast("canceled")
+                }
+                ActivityResult.RESULT_IN_APP_UPDATE_FAILED -> {
+                    applicationContext.showToast("failed")
+                }
+            }
+        }
+    }
 
 }

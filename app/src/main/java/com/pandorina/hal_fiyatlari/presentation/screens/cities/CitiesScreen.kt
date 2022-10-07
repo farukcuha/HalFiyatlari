@@ -39,6 +39,7 @@ import com.pandorina.hal_fiyatlari.presentation.component.MenuIcon
 import com.pandorina.hal_fiyatlari.presentation.navigation.NavigationRoutes
 import com.pandorina.hal_fiyatlari.presentation.screens.cities.components.CityView
 import com.pandorina.hal_fiyatlari.presentation.theme.city_foreground
+import com.pandorina.hal_fiyatlari.util.InterstitialAdManager
 import kotlinx.coroutines.*
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -92,6 +93,7 @@ fun CitiesScreen(
                                 navController.navigate(
                                     "${NavigationRoutes.Prices.route}/${city.id}/${city.title}"
                                 )
+                                InterstitialAdManager.show()
                             }
                         }
                     }

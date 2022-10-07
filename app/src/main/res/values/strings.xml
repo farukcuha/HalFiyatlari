@@ -8,6 +8,7 @@
     <string name="currency">Güncel Döviz Fiyatları</string>
     <string name="cities">Bölgeler</string>
     <string name="back">Back</string>
+    <string name="clear_all">Hepsini Sil</string>
     <string name="cancel">Cancel</string>
     <string name="info">Info</string>
 </resources>

@@ -33,6 +33,9 @@ interface EarningsDao {
     @Query("DELETE FROM earnings_table WHERE id = :earningId")
     suspend fun deleteEarning(earningId: Int)
 
+    @Query("DELETE FROM earnings_table")
+    suspend fun clear()
+
     @Query("SELECT * FROM earnings_table ORDER BY time DESC")
     fun getPrices(): Flow<List<EarningEntity>>
 

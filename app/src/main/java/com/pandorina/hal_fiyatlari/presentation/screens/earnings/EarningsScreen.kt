@@ -38,6 +38,9 @@ fun EarningsScreen(
     val viewModel: EarningsViewModel = hiltViewModel()
     val uiState = viewModel.uiState.value
     val earningIdToBeDeleted = remember { mutableStateOf<Int?>(null)  }
+    var showClearDialog by remember {
+        mutableStateOf(false)
+    }
 
     Scaffold(
         topBar = {
@@ -46,6 +49,11 @@ fun EarningsScreen(
                 navigationIcon = {
                     MenuIcon(action = MenuAction.Back) {
                         navController?.popBackStack()
+                    }
+                },
+                actions = {
+                    MenuIcon(action = MenuAction.Clear) {
+                        showClearDialog = true
                     }
                 }
             )
@@ -128,8 +136,23 @@ fun EarningsScreen(
                         Spacer(modifier = Modifier.size(8.dp))
                     }
                 }
-
             }
+
+            if (showClearDialog) CustomDialog(
+                title = "Sil",
+                text = "Tüm kayıtlarınızı silmek istediğinize emin misiniz? Bu işlem geri alınamaz!",
+                confirmButtonText = "Sil",
+                onConfirm = {
+                    viewModel.clear()
+                    showClearDialog = false
+                },
+                confirmButtonColor = Color.Red,
+                dismissButtonText = "İptal",
+                dismissButtonColor = black,
+                onDismiss = {
+                    showClearDialog = false
+                }
+            )
         }
     )
 }

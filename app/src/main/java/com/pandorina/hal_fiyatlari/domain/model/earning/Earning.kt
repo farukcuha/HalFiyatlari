@@ -19,6 +19,9 @@ data class Earning(
         val remainedTime = today - timeStamp
         val dateFormat = SimpleDateFormat("dd MMMM yyyy EEEE", Locale.getDefault())
         when {
+            remainedTime < 0 -> {
+                dateFormat.format(this)
+            }
             remainedTime < oneDay -> {
                 "Bugün"
             }

@@ -2,6 +2,7 @@ package com.pandorina.hal_fiyatlari.presentation.screens.earnings
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -107,11 +108,11 @@ fun AddEarningScreen(
 
                 try {
                     val income =
-                        (unitPrice.toPriceValue() * totalCaseCount.toPriceValue() * caseWeight.toPriceValue())
+                        (unitPrice.toActualValue() * totalCaseCount.toActualValue() * caseWeight.toActualValue())
                     totalIncome =
-                        (income - income * (commissionPercentage.toPriceValue() / 100)).toString()
+                        (income - income * (commissionPercentage.toActualValue() / 100)).toString()
                 } catch (e: Exception) {
-
+                    e.printStackTrace()
                 }
 
                 AnimatedVisibility(
@@ -211,7 +212,9 @@ fun AddEarningScreen(
                 }
                 OutlinedButton(
                     onClick = {
-                        context.datePickerDialog { millis ->
+                        context.datePickerDialog(Calendar.getInstance().apply {
+                            timeInMillis = time
+                        }) { millis ->
                             time = millis
                         }.show()
                     },
@@ -224,7 +227,7 @@ fun AddEarningScreen(
 
                 EarningButton(
                     color = black,
-                    text = if (earning != null) "Kaydet" else "Ekle",
+                    text = "Kaydet",
                     modifier = Modifier.padding(top = 8.dp)
                 ) {
                     if (name.isEmpty()) {
@@ -298,7 +301,7 @@ fun AddEarningScreen(
     )
 }
 
-private fun String.toPriceValue(): Float {
+private fun String.toActualValue(): Float {
     return replace(",", ".")
         .replace(" ", "")
         .replace("-", "")
@@ -309,8 +312,8 @@ fun String.toPriceDecimal(): BigDecimal? {
     return BigDecimal(this).setScale(2, RoundingMode.HALF_EVEN)
 }
 
-private fun Context.datePickerDialog(onSelectDate: (Long) -> Unit): DatePickerDialog {
-    val currentDate = Calendar.getInstance()
+private fun Context.datePickerDialog(date: Calendar?, onSelectDate: (Long) -> Unit): DatePickerDialog {
+    val currentDate = date ?: Calendar.getInstance()
     return DatePickerDialog(
         this,
         R.style.DialogTheme,
@@ -326,5 +329,7 @@ private fun Context.datePickerDialog(onSelectDate: (Long) -> Unit): DatePickerDi
         currentDate.get(Calendar.YEAR),
         currentDate.get(Calendar.MONTH),
         currentDate.get(Calendar.DAY_OF_MONTH)
-    )
+    ).apply {
+        datePicker.maxDate = Date().time
+    }
 }

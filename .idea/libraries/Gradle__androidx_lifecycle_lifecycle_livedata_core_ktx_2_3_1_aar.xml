@@ -14,9 +14,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/beeb1c395c6d0275746d72603d6a8b9e/transformed/lifecycle-livedata-core-ktx-2.3.1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/beeec3a51dec315368b58278f3f0dec3/transformed/lifecycle-livedata-core-ktx-2.3.1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/43f207e052355771e4dca2d82bd2ce7c/transformed/lifecycle-livedata-core-ktx-2.3.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9cab21f93eac89f304e06a795162df04/transformed/lifecycle-livedata-core-ktx-2.3.1/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9cab21f93eac89f304e06a795162df04/transformed/lifecycle-livedata-core-ktx-2.3.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9cab21f93eac89f304e06a795162df04/transformed/lifecycle-livedata-core-ktx-2.3.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f72b5916a64baf05bc85eb6b4c743347/transformed/lifecycle-livedata-core-ktx-2.3.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f72b5916a64baf05bc85eb6b4c743347/transformed/lifecycle-livedata-core-ktx-2.3.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

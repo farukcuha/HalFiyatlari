@@ -27,9 +27,11 @@ object Notification {
             .getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notificationIntent = Intent(context, MainActivity::class.java)
         notificationIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        val flag = if (Build.VERSION.SDK_INT >= 31) PendingIntent.FLAG_IMMUTABLE
+                    else PendingIntent.FLAG_UPDATE_CURRENT
         val pendingIntent = PendingIntent.getActivity(
             context,
-            0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT
+            0, notificationIntent, flag
         )
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -49,6 +51,7 @@ object Notification {
             setContentTitle(title)
             setContentText(text)
             setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+            priority = NotificationCompat.PRIORITY_HIGH
             setSmallIcon(R.mipmap.ic_launcher)
             setAutoCancel(true)
             setContentIntent(pendingIntent)

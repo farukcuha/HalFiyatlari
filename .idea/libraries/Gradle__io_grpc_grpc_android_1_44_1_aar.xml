@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: io.grpc:grpc-android:1.44.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/7c763a51e7f9bbd3558a06792b2b449e/transformed/grpc-android-1.44.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7c763a51e7f9bbd3558a06792b2b449e/transformed/grpc-android-1.44.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7c763a51e7f9bbd3558a06792b2b449e/transformed/grpc-android-1.44.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/704463298f3079bddd2f424bf8f36d52/transformed/grpc-android-1.44.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/704463298f3079bddd2f424bf8f36d52/transformed/grpc-android-1.44.1/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.grpc/grpc-android/1.44.1/7f9eade0562d11317c80e0649168886fa912b02b/grpc-android-1.44.1-javadoc.jar!/" />

@@ -10,6 +10,8 @@ interface EarningRepository {
 
     suspend fun deleteEarning(earningId: Int)
 
+    suspend fun clear()
+
     fun getPrices(): Flow<List<EarningEntity>>
 
     fun getDailySum(startOfDay: Long = EarningsDao.getStartOfDay): Flow<Float?>

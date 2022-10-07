@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.compose.ui:ui-tooling-preview:1.1.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/8e3444482b22e05b402a70f36442f953/transformed/ui-tooling-preview-1.1.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8e3444482b22e05b402a70f36442f953/transformed/ui-tooling-preview-1.1.1/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8e3444482b22e05b402a70f36442f953/transformed/ui-tooling-preview-1.1.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/aa02169408888f6011f3982930aa5ea9/transformed/ui-tooling-preview-1.1.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/aa02169408888f6011f3982930aa5ea9/transformed/ui-tooling-preview-1.1.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/aa02169408888f6011f3982930aa5ea9/transformed/ui-tooling-preview-1.1.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

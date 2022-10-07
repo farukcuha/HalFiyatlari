@@ -10,6 +10,7 @@ import com.pandorina.hal_fiyatlari.core.BaseViewModel
 import com.pandorina.hal_fiyatlari.data.local.EarningsDao
 import com.pandorina.hal_fiyatlari.domain.model.earning.Earning
 import com.pandorina.hal_fiyatlari.domain.repository.EarningRepository
+import com.pandorina.hal_fiyatlari.util.InterstitialAdManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -21,6 +22,7 @@ class EarningsViewModel @Inject constructor(
 ): BaseViewModel<EarningsUiState>(EarningsUiState()) {
 
     init {
+        InterstitialAdManager.show()
         _uiState.value = EarningsUiState(isLoading = true)
         getPrices()
         getDailySum()
@@ -89,6 +91,12 @@ class EarningsViewModel @Inject constructor(
     fun deleteEarning(earningId: Int){
         launchViewModelScope {
             earningRepository.deleteEarning(earningId)
+        }
+    }
+
+    fun clear(){
+        launchViewModelScope {
+            earningRepository.clear()
         }
     }
 }

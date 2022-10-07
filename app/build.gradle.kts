@@ -5,6 +5,7 @@ plugins {
     id("kotlinx-serialization")
     id("dagger.hilt.android.plugin")
     id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -23,7 +24,7 @@ android {
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                     getDefaultProguardFile("proguard-android-optimize.txt"),
                     "proguard-rules.pro"
@@ -70,8 +71,19 @@ dependencies {
     implementation (platform("com.google.firebase:firebase-bom:30.4.0"))
     implementation("com.google.firebase:firebase-config-ktx")
     implementation("com.google.firebase:firebase-analytics-ktx")
-
     implementation("com.google.firebase:firebase-messaging-ktx:23.0.8")
+    implementation("com.google.firebase:firebase-crashlytics-ndk:18.2.13")
+    // For Kotlin users also import the Kotlin extensions library for Play In-App Update:
+    implementation("com.google.android.play:app-update:2.0.0")
+    //implementation("com.google.android.play:core:1.10.3")
+    // For Kotlin users also import the Kotlin extensions library for Play In-App Update:
+    implementation("com.google.android.play:app-update-ktx:2.0.0")
+    implementation("com.google.firebase:firebase-crashlytics:18.2.11")
+    implementation("com.google.firebase:firebase-analytics:21.1.0")
+    implementation("com.google.firebase:firebase-crashlytics-ktx:18.2.11")
+    implementation("com.google.android.gms:play-services-ads:21.2.0")
+
+
 
     implementationAppLibraries()
     implementationTestLibraries()

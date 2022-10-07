@@ -9,6 +9,8 @@ buildscript {
         classpath(kotlin("gradle-plugin", version = Versions.kotlin))
         classpath(kotlin("serialization", version = Versions.kotlin))
         classpath("com.google.gms:google-services:4.3.13")
+        classpath("com.google.firebase:firebase-crashlytics-gradle:2.9.2")
+
     }
 }
 

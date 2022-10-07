@@ -5,6 +5,7 @@ import com.pandorina.hal_fiyatlari.data.local.entity.CityEntity
 import com.pandorina.hal_fiyatlari.domain.model.city.City
 import com.pandorina.hal_fiyatlari.domain.repository.CitiesRepository
 import com.pandorina.hal_fiyatlari.domain.repository.FavoriteCitiesRepository
+import com.pandorina.hal_fiyatlari.util.InterstitialAdManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject

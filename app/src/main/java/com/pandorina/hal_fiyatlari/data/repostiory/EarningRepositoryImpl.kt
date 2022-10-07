@@ -16,6 +16,10 @@ class EarningRepositoryImpl(
         return earningsDao.deleteEarning(earningId)
     }
 
+    override suspend fun clear() {
+        earningsDao.clear()
+    }
+
     override fun getPrices(): Flow<List<EarningEntity>> {
         return earningsDao.getPrices()
     }

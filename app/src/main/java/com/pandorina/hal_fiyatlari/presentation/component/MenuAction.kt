@@ -11,6 +11,6 @@ sealed class MenuAction(
     val icon: ImageVector
 ) {
     object Share : MenuAction(R.string.share, Icons.Default.Share)
-    object Info : MenuAction(R.string.info, Icons.Default.Info)
     object Back : MenuAction(R.string.back, Icons.Default.ArrowBack)
+    object Clear: MenuAction(R.string.back, Icons.Filled.DeleteSweep)
 }

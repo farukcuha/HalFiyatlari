@@ -35,9 +35,8 @@ object RemoteModule{
     fun provideHttpClient(): HttpClient {
         return HttpClient(Android){
             defaultRequest {
-                host = "halfiyatlariapi-env-2.eba-r47irhmd.us-east-1.elasticbeanstalk.com"
-                url { protocol = URLProtocol.HTTP }
-                basicAuth("farukcuhalfiyatlari", "halfiyatlariapi2023")
+                host = "halfiyatlariapi.ahmetfarukcuha.com"
+                url { protocol = URLProtocol.HTTPS }
             }
 
             install(ContentNegotiation){
