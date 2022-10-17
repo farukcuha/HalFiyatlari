@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -73,6 +74,7 @@ fun PricesScreen(
     )
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun CurrentDate(
     dates: List<String?>?,
@@ -84,39 +86,45 @@ fun CurrentDate(
     var selectedIndex by remember {
         mutableStateOf(0)
     }
-    Box(
-        modifier = Modifier
-            .padding(8.dp)
-            .border(0.5.dp, black, RoundedCornerShape(8.dp))
-            .clickable { expanded = true }
-            .padding(8.dp)
-            .fillMaxWidth()
+    Card(
+        onClick = {
+            expanded = true
+        },
+        modifier = Modifier.padding(8.dp),
+        shape = RoundedCornerShape(8.dp),
+        elevation = 8.dp,
     ) {
-        Text(
-            text = "${dates?.getOrNull(selectedIndex)}",
-            textAlign = TextAlign.Center,
-            fontWeight = FontWeight.SemiBold,
-            modifier = Modifier.align(Center)
-        )
-        DropdownMenu(
-            expanded = expanded,
-            onDismissRequest = { expanded = false },
-            modifier = Modifier.fillMaxWidth().heightIn(max = 360.dp)
+        Box(
+            modifier = Modifier
+                .padding(8.dp)
+                .fillMaxWidth()
         ) {
-            dates?.forEachIndexed { index, s ->
-                DropdownMenuItem(
-                    onClick = {
-                        selectedIndex = index
-                        expanded = false
-                        onClickDate("${dates[index]}")
-                    },
-                ) {
-                    Text(
-                        text = "${dates[index]}",
-                        textAlign = TextAlign.Center,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.fillMaxWidth()
-                    )
+            Text(
+                text = dates?.getOrNull(selectedIndex) ?: "Kayıtlı fiyat bulunmuyor.",
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.align(Center)
+            )
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false },
+                modifier = Modifier.fillMaxWidth().heightIn(max = 360.dp)
+            ) {
+                dates?.forEachIndexed { index, s ->
+                    DropdownMenuItem(
+                        onClick = {
+                            selectedIndex = index
+                            expanded = false
+                            onClickDate("${dates[index]}")
+                        },
+                    ) {
+                        Text(
+                            text = "${dates[index]}",
+                            textAlign = TextAlign.Center,
+                            fontWeight = FontWeight.SemiBold,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
                 }
             }
         }
@@ -165,10 +173,12 @@ fun PriceItem(
                 fontSize = 16.sp
             )
 
-            Text(
-                text = "${price?.measure}",
-                fontSize = 14.sp
-            )
+            if (price?.measure?.isNotEmpty() == true){
+                Text(
+                    text = price.measure,
+                    fontSize = 14.sp
+                )
+            }
         }
         Divider(
             modifier = Modifier.constrainAs(refDivider) {

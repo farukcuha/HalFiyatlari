@@ -8,6 +8,7 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.pandorina.hal_fiyatlari.BuildConfig
 import com.pandorina.hal_fiyatlari.HalFiyatlariApp
 
 object InterstitialAdManager {
@@ -25,7 +26,7 @@ object InterstitialAdManager {
     }
 
     private fun fetchAd(){
-        InterstitialAd.load(HalFiyatlariApp.get(), "ca-app-pub-3940256099942544/1033173712",
+        InterstitialAd.load(HalFiyatlariApp.get(), BuildConfig.INTERSTITIAL_AD_UNIT_ID,
             adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 Log.d(TAG, adError.toString())

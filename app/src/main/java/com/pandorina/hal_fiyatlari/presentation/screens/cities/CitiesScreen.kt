@@ -6,9 +6,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -68,17 +66,15 @@ fun CitiesScreen(
                 modifier = Modifier.fillMaxSize()
             ) {
 
-                LazyColumn(
-                    state = listState
+                LazyVerticalGrid(
+                    state = listState,
+                    cells = GridCells.Fixed(2)
                 ) {
                     state.cities?.let { cities ->
-                        items(cities.size, key = { cities[it]?.id ?: "" } ) {
+                        items(cities.size ) {
                             CityView(
                                 city = cities[it] ?: return@items,
                                 listState = listState,
-                                modifier = Modifier
-                                    .animateItemPlacement(
-                                        animationSpec = tween(500)),
                             onClickFavoriteButton = { city ->
                                 if (city.isFavorite) viewModel.deleteFavoriteCity(city.id ?: return@CityView)
                                 else viewModel.insertFavoriteCity(

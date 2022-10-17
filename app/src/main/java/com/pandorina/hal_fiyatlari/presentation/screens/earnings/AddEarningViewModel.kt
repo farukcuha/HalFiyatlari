@@ -1,5 +1,6 @@
 package com.pandorina.hal_fiyatlari.presentation.screens.earnings
 
+import android.text.Html
 import androidx.lifecycle.viewModelScope
 import com.pandorina.hal_fiyatlari.core.BaseViewModel
 import com.pandorina.hal_fiyatlari.data.local.entity.EarningEntity

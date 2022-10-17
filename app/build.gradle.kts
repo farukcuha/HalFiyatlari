@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -7,6 +10,10 @@ plugins {
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
 }
+
+val file = rootProject.file("secrets.properties")
+val properties = Properties()
+properties.load(FileInputStream(file))
 
 android {
     compileSdkVersion = AppConfig.compileSdk
@@ -20,6 +27,9 @@ android {
         versionName = AppConfig.versionName
 
         testInstrumentationRunner = AppConfig.androidTestInstrumentation
+
+        buildConfigField("String", "BASE_URL", properties["BASE_URL"] as String)
+        buildConfigField("String", "INTERSTITIAL_AD_UNIT_ID", properties["INTERSTITIAL_AD_UNIT_ID"] as String)
     }
 
     buildTypes {

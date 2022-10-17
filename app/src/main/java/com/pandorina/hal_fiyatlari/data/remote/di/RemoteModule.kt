@@ -1,6 +1,7 @@
 package com.pandorina.hal_fiyatlari.data.remote.di
 
 import android.util.Log
+import com.pandorina.hal_fiyatlari.BuildConfig
 import com.pandorina.hal_fiyatlari.data.remote.city.CitiesService
 import com.pandorina.hal_fiyatlari.data.remote.city.CitiesServiceImpl
 import com.pandorina.hal_fiyatlari.data.remote.currency.CurrencyService
@@ -35,8 +36,8 @@ object RemoteModule{
     fun provideHttpClient(): HttpClient {
         return HttpClient(Android){
             defaultRequest {
-                host = "halfiyatlariapi.ahmetfarukcuha.com"
-                url { protocol = URLProtocol.HTTPS }
+                host = BuildConfig.BASE_URL
+                url { protocol = URLProtocol.HTTP }
             }
 
             install(ContentNegotiation){

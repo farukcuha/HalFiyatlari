@@ -29,7 +29,6 @@ import kotlinx.coroutines.launch
 fun CityView(
     city: City,
     listState: LazyListState,
-    modifier: Modifier,
     onClickFavoriteButton: (City) -> Unit,
     navigate: (City) -> Unit
 ) {
@@ -40,8 +39,8 @@ fun CityView(
         onClick = {
             navigate(city)
         },
-        modifier = modifier
-            .height(152.dp)
+        modifier = Modifier
+            .height(120.dp)
             .padding(4.dp)
     ) {
         Box {
@@ -52,8 +51,8 @@ fun CityView(
                     .fillMaxSize()
             )
             Text(
-                text = "${city.title} Hal Fiyatları",
-                fontSize = 18.sp,
+                text = "${city.title}",
+                fontSize = 16.sp,
                 color = Color.White,
                 fontWeight = FontWeight.SemiBold,
                 modifier = Modifier
