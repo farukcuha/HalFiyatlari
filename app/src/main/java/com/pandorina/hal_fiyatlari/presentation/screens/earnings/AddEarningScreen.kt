@@ -2,7 +2,6 @@ package com.pandorina.hal_fiyatlari.presentation.screens.earnings
 
 import android.app.DatePickerDialog
 import android.content.Context
-import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -109,9 +108,9 @@ fun AddEarningScreen(
 
                 try {
                     val income =
-                        (unitPrice.toInt() * totalCaseCount.toInt() * caseWeight.toInt())
+                        (unitPrice.toPriceValue() * totalCaseCount.toPriceValue() * caseWeight.toPriceValue())
                     totalIncome =
-                        (income - income * (commissionPercentage.toInt() / 100)).toString()
+                        (income - income * (commissionPercentage.toPriceValue() / 100)).toString()
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -121,7 +120,7 @@ fun AddEarningScreen(
                     modifier = Modifier.align(CenterHorizontally)
                 ) {
                     Text(
-                        text = "Net : ${totalIncome.toPriceDecimal()} ₺",
+                        text = "Net : ${totalIncome.toPriceValue()} ₺",
                         fontWeight = FontWeight.Bold,
                         fontSize = 28.sp
                     )
@@ -147,7 +146,7 @@ fun AddEarningScreen(
                     label = "Birim Fiyat",
                     onValueChange = { unitPrice = it },
                     text = unitPrice,
-                    keyboardType = KeyboardType.NumberPassword,
+                    keyboardType = KeyboardType.Number,
                     isError = isErrorUnitPrice,
                     onClickClear = { unitPrice = "" }
                 )
@@ -164,7 +163,7 @@ fun AddEarningScreen(
                     label = "Toplam Kasa Sayısı",
                     onValueChange = { totalCaseCount = it },
                     text = totalCaseCount,
-                    keyboardType = KeyboardType.NumberPassword,
+                    keyboardType = KeyboardType.Number,
                     isError = isErrorTotalCaseCount,
                     onClickClear = { totalCaseCount = "" }
                 )
@@ -181,7 +180,7 @@ fun AddEarningScreen(
                     label = "Kasa Kaç Kilogram?",
                     onValueChange = { caseWeight = it },
                     text = caseWeight,
-                    keyboardType = KeyboardType.NumberPassword,
+                    keyboardType = KeyboardType.Number,
                     isError = isErrorCaseWeight,
                     onClickClear = { caseWeight = "" }
                 )
@@ -198,7 +197,7 @@ fun AddEarningScreen(
                     label = "Komisyon Oranı (Yüzde)",
                     onValueChange = { commissionPercentage = it },
                     text = commissionPercentage,
-                    keyboardType = KeyboardType.NumberPassword,
+                    keyboardType = KeyboardType.Number,
                     isError = isErrorCommissionPercentage,
                     imeAction = ImeAction.Done,
                     onClickClear = { commissionPercentage = "" }
@@ -261,11 +260,11 @@ fun AddEarningScreen(
                         EarningEntity(
                             id = earning?.id,
                             name = name,
-                            unitPrice = unitPrice.toFloat(),
-                            totalCaseCount = totalCaseCount.toFloat(),
-                            caseWeight = caseWeight.toFloat(),
-                            commissionPercentage = commissionPercentage.toFloat(),
-                            totalIncome = totalIncome.toFloat(),
+                            unitPrice = unitPrice.toPriceValue(),
+                            totalCaseCount = totalCaseCount.toPriceValue(),
+                            caseWeight = caseWeight.toPriceValue(),
+                            commissionPercentage = commissionPercentage.toPriceValue(),
+                            totalIncome = totalIncome.toPriceValue(),
                             timeStamp = time
                         )
                     )
@@ -303,8 +302,11 @@ fun AddEarningScreen(
     )
 }
 
-fun String.toPriceDecimal(): BigDecimal? {
-    return BigDecimal(this).setScale(2, RoundingMode.HALF_EVEN)
+private fun String.toPriceValue(): Float {
+    val actualValue = replace(",", ".")
+        .replace(" ", "")
+        .replace("-", "")
+    return BigDecimal(actualValue).setScale(2, RoundingMode.HALF_EVEN).toFloat()
 }
 
 private fun Context.datePickerDialog(date: Calendar?, onSelectDate: (Long) -> Unit): DatePickerDialog {
