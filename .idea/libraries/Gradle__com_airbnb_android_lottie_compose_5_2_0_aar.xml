@@ -15,8 +15,8 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/595f3f3ef486d973218915f49f1e1f87/transformed/lottie-compose-5.2.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/35e10f85d545cdc5b6ffd713c07cc17e/transformed/lottie-compose-5.2.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/bc48ea6fbe43a5bacda2f698ca64fd2c/transformed/lottie-compose-5.2.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/085c73da4d514a53a551c49a8cfdde00/transformed/lottie-compose-5.2.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/085c73da4d514a53a551c49a8cfdde00/transformed/lottie-compose-5.2.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/edeec73ab94befb42142212d1c7893d8/transformed/lottie-compose-5.2.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/edeec73ab94befb42142212d1c7893d8/transformed/lottie-compose-5.2.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.airbnb.android/lottie-compose/5.2.0/db0246d1eaf0d4e50123ec6d83a800bdf90c38db/lottie-compose-5.2.0-javadoc.jar!/" />

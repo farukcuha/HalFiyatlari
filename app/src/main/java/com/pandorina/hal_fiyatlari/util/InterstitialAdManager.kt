@@ -15,11 +15,10 @@ object InterstitialAdManager {
     const val TAG = "InterstitialAdManager"
     private var mInterstitialAd = MutableLiveData<InterstitialAd?>(null)
     var mActivity: ComponentActivity? = null
-    private val adRequest = AdRequest.Builder().build()
+    val adRequest = AdRequest.Builder().build()
 
     fun initialize(activity: ComponentActivity){
         mActivity = activity
-        MobileAds.initialize(activity) {}
         mInterstitialAd.observe(activity){
             if (it == null) fetchAd()
         }

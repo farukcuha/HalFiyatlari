@@ -3,18 +3,23 @@ package com.pandorina.hal_fiyatlari.presentation.screens.earnings.components
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.runtime.*
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pandorina.hal_fiyatlari.presentation.theme.black
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 @Preview
 fun EarningTextField(
@@ -24,8 +29,11 @@ fun EarningTextField(
     onValueChange: (String) -> Unit = {},
     onClickClear: () -> Unit = {},
     keyboardType: KeyboardType = KeyboardType.Text,
+    imeAction: ImeAction = ImeAction.Next,
     isError: Boolean = false
 ) {
+    val keyboardController = LocalSoftwareKeyboardController.current
+
     OutlinedTextField(
         value = text,
         onValueChange = { onValueChange(it) },
@@ -48,7 +56,10 @@ fun EarningTextField(
                 backgroundColor = Color.Transparent
         ),
         keyboardOptions = KeyboardOptions(
-            keyboardType = keyboardType
-        )
+            keyboardType = keyboardType,
+            imeAction = imeAction
+        ),
+        keyboardActions = KeyboardActions(
+            onDone = { keyboardController?.hide() })
     )
 }

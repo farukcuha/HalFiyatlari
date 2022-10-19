@@ -24,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import com.google.android.play.core.install.model.ActivityResult
 import com.pandorina.hal_fiyatlari.util.AppUpdateManager
 import com.pandorina.hal_fiyatlari.util.InterstitialAdManager
+import com.pandorina.hal_fiyatlari.util.in_app_review.GNTReviewManager
 import com.pandorina.hal_fiyatlari.util.showToast
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -58,6 +59,14 @@ class MainActivity : ComponentActivity() {
 
         AppUpdateManager().checkUpdateInfo(this)
         InterstitialAdManager.initialize(this)
+        GNTReviewManager.with(this)
+            .setInstallDays(2)
+            .setLaunchTimes(3)
+            .setRemindInterval(2)
+            .setDebug(false)
+            .monitor()
+
+        GNTReviewManager.showRateDialogIfMeetsConditions(this)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

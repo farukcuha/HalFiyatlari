@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -108,9 +109,9 @@ fun AddEarningScreen(
 
                 try {
                     val income =
-                        (unitPrice.toActualValue() * totalCaseCount.toActualValue() * caseWeight.toActualValue())
+                        (unitPrice.toInt() * totalCaseCount.toInt() * caseWeight.toInt())
                     totalIncome =
-                        (income - income * (commissionPercentage.toActualValue() / 100)).toString()
+                        (income - income * (commissionPercentage.toInt() / 100)).toString()
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -146,7 +147,7 @@ fun AddEarningScreen(
                     label = "Birim Fiyat",
                     onValueChange = { unitPrice = it },
                     text = unitPrice,
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.NumberPassword,
                     isError = isErrorUnitPrice,
                     onClickClear = { unitPrice = "" }
                 )
@@ -163,7 +164,7 @@ fun AddEarningScreen(
                     label = "Toplam Kasa Sayısı",
                     onValueChange = { totalCaseCount = it },
                     text = totalCaseCount,
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.NumberPassword,
                     isError = isErrorTotalCaseCount,
                     onClickClear = { totalCaseCount = "" }
                 )
@@ -180,7 +181,7 @@ fun AddEarningScreen(
                     label = "Kasa Kaç Kilogram?",
                     onValueChange = { caseWeight = it },
                     text = caseWeight,
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.NumberPassword,
                     isError = isErrorCaseWeight,
                     onClickClear = { caseWeight = "" }
                 )
@@ -197,8 +198,9 @@ fun AddEarningScreen(
                     label = "Komisyon Oranı (Yüzde)",
                     onValueChange = { commissionPercentage = it },
                     text = commissionPercentage,
-                    keyboardType = KeyboardType.Number,
+                    keyboardType = KeyboardType.NumberPassword,
                     isError = isErrorCommissionPercentage,
+                    imeAction = ImeAction.Done,
                     onClickClear = { commissionPercentage = "" }
                 )
                 AnimatedVisibility(visible = uiState.commissionPercentageInputPasts.isNotEmpty()) {
@@ -299,13 +301,6 @@ fun AddEarningScreen(
             }
         }
     )
-}
-
-private fun String.toActualValue(): Float {
-    return replace(",", ".")
-        .replace(" ", "")
-        .replace("-", "")
-        .toFloat()
 }
 
 fun String.toPriceDecimal(): BigDecimal? {

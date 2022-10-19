@@ -1,6 +1,7 @@
 package com.pandorina.hal_fiyatlari.presentation.screens.prices
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -20,19 +21,28 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
 import androidx.navigation.NavController
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
+import com.pandorina.hal_fiyatlari.R
 import com.pandorina.hal_fiyatlari.domain.model.price.Price
 import com.pandorina.hal_fiyatlari.presentation.component.*
 import com.pandorina.hal_fiyatlari.presentation.theme.black
 import com.pandorina.hal_fiyatlari.presentation.theme.white
+import com.pandorina.hal_fiyatlari.util.InterstitialAdManager
 import kotlin.math.max
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -43,6 +53,8 @@ fun PricesScreen(
 ) {
     val viewModel: PricesViewModel = hiltViewModel()
     val uiState = viewModel.uiState.value
+    val lifecycleState = LocalLifecycleOwner.current.lifecycle.observeAsState().value
+
     Scaffold(
         topBar = {
             CustomTopAppBar(
@@ -61,7 +73,23 @@ fun PricesScreen(
                 }
                 uiState.prices?.let { prices ->
                     LazyColumn {
+                        if (prices.firstOrNull()?.price_secondary != null) item {
+                            PriceInfoView()
+                        }
                         items(prices.size) {
+                            if (it % 10 == 0 && lifecycleState == Lifecycle.Event.ON_RESUME){
+                                AndroidView(
+                                    modifier = Modifier.fillMaxWidth().wrapContentHeight(),
+                                    factory = { context ->
+                                        AdView(context).apply {
+                                            Log.e("ad", "ad_requested")
+                                            setAdSize(AdSize.BANNER)
+                                            adUnitId = context.getString(R.string.BANNER_AD_UNIT_ID)
+                                            loadAd(InterstitialAdManager.adRequest)
+                                        }
+                                    }
+                                )
+                            }
                             PriceItem(prices[it])
                         }
                     }
@@ -72,6 +100,21 @@ fun PricesScreen(
             }
         }
     )
+}
+
+@Composable
+fun Lifecycle.observeAsState(): State<Lifecycle.Event> {
+    val state = remember { mutableStateOf(Lifecycle.Event.ON_ANY) }
+    DisposableEffect(this) {
+        val observer = LifecycleEventObserver { _, event ->
+            state.value = event
+        }
+        this@observeAsState.addObserver(observer)
+        onDispose {
+            this@observeAsState.removeObserver(observer)
+        }
+    }
+    return state
 }
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -108,7 +151,9 @@ fun CurrentDate(
             DropdownMenu(
                 expanded = expanded,
                 onDismissRequest = { expanded = false },
-                modifier = Modifier.fillMaxWidth().heightIn(max = 360.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(max = 360.dp)
             ) {
                 dates?.forEachIndexed { index, s ->
                     DropdownMenuItem(

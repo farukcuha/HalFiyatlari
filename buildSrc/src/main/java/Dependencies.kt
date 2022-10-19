@@ -91,7 +91,7 @@ fun DependencyHandler.implementationCoil(){
 
 fun DependencyHandler.implementationFirebase(){
     implementation(listOf(
-        "com.google.firebase:firebase-bom:30.2.0"
+        "com.google.firebase:firebase-bom:30.4.0"
     ))
 }
 
