@@ -1,10 +1,12 @@
 package com.pandorina.hal_fiyatlari.data.remote.currency.dto
 
+import androidx.annotation.Keep
 import com.pandorina.hal_fiyatlari.data.remote.price.dto.BaseDto
 import com.pandorina.hal_fiyatlari.domain.model.currency.Currency
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@Keep
 @Serializable
 data class CurrencyDto(
     @SerialName("name")

@@ -1,9 +1,11 @@
 package com.pandorina.hal_fiyatlari.data.remote.price.dto
 
+import androidx.annotation.Keep
 import com.pandorina.hal_fiyatlari.domain.model.price.PriceResponse
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@Keep
 @Serializable
 data class PriceResponseDto(
     @SerialName("cityId")
