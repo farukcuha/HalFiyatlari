@@ -6,7 +6,6 @@ import com.pandorina.hal_fiyatlari.domain.model.currency.Currency
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-@Keep
 @Serializable
 data class CurrencyDto(
     @SerialName("name")

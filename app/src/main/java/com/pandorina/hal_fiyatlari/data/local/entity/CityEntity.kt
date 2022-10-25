@@ -6,7 +6,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.pandorina.hal_fiyatlari.domain.model.city.City
 
-@Keep
 @Entity(tableName = "favorite_cities_table")
 data class CityEntity(
     @PrimaryKey

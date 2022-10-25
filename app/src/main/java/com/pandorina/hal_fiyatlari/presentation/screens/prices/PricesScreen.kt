@@ -2,27 +2,35 @@ package com.pandorina.hal_fiyatlari.presentation.screens.prices
 
 import android.annotation.SuppressLint
 import android.util.Log
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.ArrowDropUp
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Center
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,17 +42,15 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.navigation.NavController
-import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 import com.pandorina.hal_fiyatlari.R
 import com.pandorina.hal_fiyatlari.domain.model.price.Price
 import com.pandorina.hal_fiyatlari.presentation.component.*
-import com.pandorina.hal_fiyatlari.presentation.theme.black
 import com.pandorina.hal_fiyatlari.presentation.theme.white
 import com.pandorina.hal_fiyatlari.util.InterstitialAdManager
-import kotlin.math.max
 
+@OptIn(ExperimentalComposeUiApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Preview
 @Composable
@@ -55,47 +61,129 @@ fun PricesScreen(
     val uiState = viewModel.uiState.value
     val lifecycleState = LocalLifecycleOwner.current.lifecycle.observeAsState().value
 
+    var showClearButton by remember { mutableStateOf(false) }
+    val keyboardController = LocalSoftwareKeyboardController.current
+    val focusRequester = remember { FocusRequester() }
+    var visibleSearch by remember {
+        mutableStateOf(false)
+    }
+
     Scaffold(
         topBar = {
             CustomTopAppBar(
                 title = "${viewModel.title.value} Hal Fiyatları",
                 navigationIcon = {
                     MenuIcon(action = MenuAction.Back) {
-                        navController?.popBackStack()
+                        if (visibleSearch) {
+                            visibleSearch = false
+                            viewModel.searchQuery.value = ""
+                            viewModel.filterPrices()
+                        }
+                        else navController?.popBackStack()
+                    }
+                },
+                actions = {
+                    if (visibleSearch){
+                        OutlinedTextField(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 2.dp)
+                                .onFocusChanged { focusState ->
+                                    showClearButton = (focusState.isFocused)
+                                }
+                                .focusRequester(focusRequester),
+                            value = viewModel.searchQuery.value,
+                            onValueChange = {
+                                viewModel.searchQuery.value = it
+                                viewModel.filterPrices()
+                            },
+                            placeholder = {
+                                Text(text = "Ara")
+                            },
+                            colors = TextFieldDefaults.textFieldColors(
+                                focusedIndicatorColor = Color.Transparent,
+                                unfocusedIndicatorColor = Color.Transparent,
+                                backgroundColor = Color.Transparent,
+                                cursorColor = LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
+                            ),
+                            trailingIcon = {
+                                AnimatedVisibility(
+                                    visible = showClearButton,
+                                    enter = fadeIn(),
+                                    exit = fadeOut()
+                                ) {
+                                    IconButton(onClick = {
+                                        if (viewModel.searchQuery.value.isEmpty()) visibleSearch = false
+                                        else {
+                                            viewModel.searchQuery.value = ""
+                                            viewModel.filterPrices()
+                                        }
+                                    }) {
+                                        Icon(
+                                            imageVector = Icons.Filled.Close,
+                                            contentDescription = ""
+                                        )
+                                    }
+                                }
+                            },
+                            maxLines = 1,
+                            singleLine = true,
+                            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+                            keyboardActions = KeyboardActions(onDone = {
+                                keyboardController?.hide()
+                            }),
+                        )
+                        LaunchedEffect(Unit) {
+                            focusRequester.requestFocus()
+                        }
+                    } else MenuIcon(action = MenuAction.Search) {
+                        visibleSearch = true
                     }
                 }
             )
         },
         content = {
-            Column {
-                CurrentDate(dates = uiState.dates){
-                    viewModel.getPrices(viewModel.cityId.value, it)
-                }
-                uiState.prices?.let { prices ->
-                    LazyColumn {
-                        if (prices.firstOrNull()?.price_secondary != null) item {
-                            PriceInfoView()
-                        }
-                        items(prices.size) {
-                            if (it % 10 == 0 && lifecycleState == Lifecycle.Event.ON_RESUME){
-                                AndroidView(
-                                    modifier = Modifier.fillMaxWidth().wrapContentHeight(),
-                                    factory = { context ->
-                                        AdView(context).apply {
-                                            Log.e("ad", "ad_requested")
-                                            setAdSize(AdSize.BANNER)
-                                            adUnitId = context.getString(R.string.BANNER_AD_UNIT_ID)
-                                            loadAd(InterstitialAdManager.adRequest)
-                                        }
-                                    }
-                                )
+            Box(
+                modifier = Modifier.fillMaxSize()
+            ){
+                Column {
+                    CurrentDate(dates = uiState.dates){
+                        viewModel.getPrices(viewModel.cityId.value, it)
+                    }
+                    uiState.filteredPrices?.let { prices ->
+                        LazyColumn {
+                            if (prices.firstOrNull()?.price_secondary != null) item {
+                                PriceInfoView()
                             }
-                            PriceItem(prices[it])
+                            items(prices.size) {
+                                if (it % 10 == 0 && lifecycleState == Lifecycle.Event.ON_RESUME){
+                                    AndroidView(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .wrapContentHeight(),
+                                        factory = { context ->
+                                            AdView(context).apply {
+                                                setAdSize(AdSize.BANNER)
+                                                adUnitId = context.getString(R.string.BANNER_AD_UNIT_ID)
+                                                loadAd(InterstitialAdManager.adRequest)
+                                            }
+                                        }
+                                    )
+                                }
+                                PriceItem(prices[it])
+                            }
                         }
                     }
                 }
                 if (uiState.isLoading) {
-                    LoadingBar(modifier = Modifier.align(CenterHorizontally))
+                    LoadingBar(modifier = Modifier.align(Center))
+                }
+                if (uiState.filteredPrices?.isEmpty() == true && viewModel.searchQuery.value.isNotEmpty()) {
+                    Text(
+                        fontSize = 16.sp,
+                        text = "\"${viewModel.searchQuery.value}\" sorgusunu içeren ürün bulunamadı.",
+                        modifier = Modifier.align(Center).padding(16.dp)
+                    )
                 }
             }
         }

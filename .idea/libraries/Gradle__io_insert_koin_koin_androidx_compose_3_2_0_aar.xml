@@ -15,8 +15,8 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7cf6680acddcbedf86b468b0f5d53535/transformed/koin-androidx-compose-3.2.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/2fa7c89c463fa349b9bb635da6df6490/transformed/koin-androidx-compose-3.2.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c8cfe99c1b2c2320d69a7271928a3831/transformed/koin-androidx-compose-3.2.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a00f3de56fdf2d94c776fbf742b74fa0/transformed/koin-androidx-compose-3.2.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a00f3de56fdf2d94c776fbf742b74fa0/transformed/koin-androidx-compose-3.2.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a82e63565db60e80561b08af5cc56701/transformed/koin-androidx-compose-3.2.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a82e63565db60e80561b08af5cc56701/transformed/koin-androidx-compose-3.2.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.insert-koin/koin-androidx-compose/3.2.0/b41b5e028129c6163f3c9919e08976af65502100/koin-androidx-compose-3.2.0-javadoc.jar!/" />

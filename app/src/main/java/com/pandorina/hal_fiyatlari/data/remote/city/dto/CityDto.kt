@@ -5,7 +5,6 @@ import com.pandorina.hal_fiyatlari.data.remote.price.dto.BaseDto
 import com.pandorina.hal_fiyatlari.domain.model.city.City
 import kotlinx.serialization.SerialName
 
-@Keep
 @kotlinx.serialization.Serializable
 data class CityDto(
     @SerialName("id")

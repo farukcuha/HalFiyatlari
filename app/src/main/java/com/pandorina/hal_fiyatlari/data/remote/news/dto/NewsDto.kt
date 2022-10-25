@@ -6,7 +6,6 @@ import com.pandorina.hal_fiyatlari.domain.model.news.News
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-@Keep
 @Serializable
 data class NewsDto(
     @SerialName("time")

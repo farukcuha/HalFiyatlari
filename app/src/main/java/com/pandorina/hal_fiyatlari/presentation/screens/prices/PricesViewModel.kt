@@ -1,11 +1,11 @@
 package com.pandorina.hal_fiyatlari.presentation.screens.prices
 
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.lifecycle.*
 import com.pandorina.hal_fiyatlari.core.BaseViewModel
 import com.pandorina.hal_fiyatlari.domain.repository.PricesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,6 +20,8 @@ class PricesViewModel @Inject constructor(
 
     private val _cityId = mutableStateOf("")
     val cityId: State<String> = _cityId
+
+    var searchQuery = mutableStateOf("")
 
     init {
         savedStateHandle.get<String>("cityId")?.let {
@@ -52,11 +54,18 @@ class PricesViewModel @Inject constructor(
             pricesRepository.getPricesByDate(cityId, date).collectLatest { result ->
                 result.onSuccess {
                     _uiState.value = _uiState.value.copy(isLoading = false, prices = it.prices)
+                    filterPrices()
                 }
                 result.onFailure {
                     _uiState.value = _uiState.value.copy(isLoading = false, error = it.localizedMessage)
                 }
             }
         }
+    }
+
+    fun filterPrices(){
+        _uiState.value = _uiState.value.copy(filteredPrices = uiState.value.prices?.filter {
+            it?.name?.contains(searchQuery.value, ignoreCase = true) == true
+        })
     }
 }

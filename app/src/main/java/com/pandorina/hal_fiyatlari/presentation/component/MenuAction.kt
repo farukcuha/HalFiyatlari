@@ -13,4 +13,5 @@ sealed class MenuAction(
     object Share : MenuAction(R.string.share, Icons.Default.Share)
     object Back : MenuAction(R.string.back, Icons.Default.ArrowBack)
     object Clear: MenuAction(R.string.back, Icons.Filled.DeleteSweep)
+    object Search: MenuAction(R.string.search, Icons.Filled.Search)
 }

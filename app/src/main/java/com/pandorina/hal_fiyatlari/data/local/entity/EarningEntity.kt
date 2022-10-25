@@ -6,7 +6,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.pandorina.hal_fiyatlari.domain.model.earning.Earning
 
-@Keep
 @Entity(tableName = "earnings_table")
 data class EarningEntity(
     @PrimaryKey

@@ -6,5 +6,6 @@ import com.pandorina.hal_fiyatlari.core.BaseUiState
 data class PricesUiState(
     var dates: List<String?>? = null,
     var prices: List<Price?>? = null,
+    var filteredPrices: List<Price?>? = null,
     override var isLoading: Boolean = false,
     override var error: String? = ""): BaseUiState()

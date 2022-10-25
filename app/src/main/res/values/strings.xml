@@ -7,8 +7,9 @@
     <string name="news">Son Dakika Haberleri</string>
     <string name="currency">Güncel Döviz Fiyatları</string>
     <string name="cities">Bölgeler</string>
-    <string name="back">Back</string>
+    <string name="back">Geri</string>
+    <string name="search">Ara</string>
     <string name="clear_all">Hepsini Sil</string>
-    <string name="cancel">Cancel</string>
-    <string name="info">Info</string>
+    <string name="cancel">İptal</string>
+    <string name="info">Bilgi</string>
 </resources>

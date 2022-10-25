@@ -5,7 +5,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Keep
 @Entity(tableName = "earning_input_past_table", primaryKeys = ["name"])
 data class EarningInputPastEntity(
     @ColumnInfo(name = "name")

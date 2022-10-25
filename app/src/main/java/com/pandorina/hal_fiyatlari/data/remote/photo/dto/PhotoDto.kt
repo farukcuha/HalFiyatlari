@@ -6,7 +6,6 @@ import com.pandorina.hal_fiyatlari.domain.model.photo.Photo
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-@Keep
 @Serializable
 data class PhotoDto(
     @SerialName("imageUrl")
