@@ -19,3 +19,12 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keep class com.pandorina.hal_fiyatlar.data.remote.city.dto.** { *; }
+-keep class com.pandorina.hal_fiyatlar.data.remote.currency.dto.** { *; }
+-keep class com.pandorina.hal_fiyatlar.data.remote.news.dto.** { *; }
+-keep class com.pandorina.hal_fiyatlar.data.remote.photo.dto.** { *; }
+-keep class com.pandorina.hal_fiyatlar.data.remote.price.dto.** { *; }
+-keepclasseswithmembers class **.R$* {
+    public static <fields>;
+}
