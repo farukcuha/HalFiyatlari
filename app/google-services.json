@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:309823481863:android:7817bdc86e3a555a9122a2",
+        "mobilesdk_app_id": "1:309823481863:android:14b31ac57ea8c3d69122a2",
         "android_client_info": {
-          "package_name": "com.pandorina.hal_fiyatlari"
+          "package_name": "com.pandorina.hal_fiyatlar"
         }
       },
       "oauth_client": [

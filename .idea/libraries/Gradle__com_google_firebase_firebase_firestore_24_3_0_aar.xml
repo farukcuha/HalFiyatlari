@@ -2,8 +2,8 @@
   <library name="Gradle: com.google.firebase:firebase-firestore:24.3.0@aar">
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/dfacfeafff88c1c0769af3cb9fb4ce97/transformed/firebase-firestore-24.3.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1fc502592eae4834f9955cb6ab0d4b8e/transformed/firebase-firestore-24.3.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1fc502592eae4834f9955cb6ab0d4b8e/transformed/firebase-firestore-24.3.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/37235465053b65c7faeeb343e3b84e25/transformed/firebase-firestore-24.3.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/37235465053b65c7faeeb343e3b84e25/transformed/firebase-firestore-24.3.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-firestore/24.3.0/ca4ba3b17798996dbe009ebd4dbea9bdc2876dea/firebase-firestore-24.3.0-javadoc.jar!/" />

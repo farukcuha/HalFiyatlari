@@ -2,8 +2,8 @@
   <library name="Gradle: com.google.firebase:firebase-config-ktx:21.1.2@aar">
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ebf08a4ed9192cbb2cbf8f1bd563ebf4/transformed/firebase-config-ktx-21.1.2/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/0dad65d76838984366096d41c9347bcb/transformed/firebase-config-ktx-21.1.2/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0dad65d76838984366096d41c9347bcb/transformed/firebase-config-ktx-21.1.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/25551743a4387ee8ade0c158a2b52f72/transformed/firebase-config-ktx-21.1.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/25551743a4387ee8ade0c158a2b52f72/transformed/firebase-config-ktx-21.1.2/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-config-ktx/21.1.2/3062da390d1bb2d3fb6ec95346ccbc6c1ec489e5/firebase-config-ktx-21.1.2-javadoc.jar!/" />

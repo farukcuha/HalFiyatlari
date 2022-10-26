@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pandorina.hal_fiyatlari">
+    package="com.pandorina.hal_fiyatlar">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
@@ -11,12 +11,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:name=".HalFiyatlariApp"
+        android:name="com.pandorina.hal_fiyatlar.HalFiyatlariApp"
         android:hardwareAccelerated="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.HalFiyatlari">
         <activity
-            android:name="com.pandorina.hal_fiyatlari.MainActivity"
+            android:name="com.pandorina.hal_fiyatlar.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.HalFiyatlari">
             <intent-filter>
@@ -27,7 +27,7 @@
         </activity>
 
         <service
-            android:name=".service.CloudNotificationService"
+            android:name="com.pandorina.hal_fiyatlar.service.CloudNotificationService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
