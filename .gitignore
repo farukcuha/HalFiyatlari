@@ -3,3 +3,4 @@
 /buildSrc/.gradle/
 /buildSrc/build/
 secrets.properties
+hal_fiyatlari_release_key
