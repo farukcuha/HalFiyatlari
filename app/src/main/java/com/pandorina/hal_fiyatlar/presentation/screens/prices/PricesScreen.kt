@@ -48,6 +48,7 @@ import com.google.android.gms.ads.AdView
 import com.pandorina.hal_fiyatlar.R
 import com.pandorina.hal_fiyatlar.domain.model.price.Price
 import com.pandorina.hal_fiyatlar.presentation.component.*
+import com.pandorina.hal_fiyatlar.presentation.theme.black
 import com.pandorina.hal_fiyatlar.presentation.theme.white
 import com.pandorina.hal_fiyatlar.util.InterstitialAdManager
 
@@ -318,7 +319,8 @@ fun PriceItem(
             if (price?.measure?.isNotEmpty() == true){
                 Text(
                     text = price.measure,
-                    fontSize = 14.sp
+                    fontSize = 14.sp,
+                    color = black
                 )
             }
         }
