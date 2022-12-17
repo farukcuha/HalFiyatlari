@@ -28,9 +28,9 @@ class EarningRepositoryImpl(
         return earningsDao.getDailySum()
     }
 
-    override fun getWeeklySum(startOfWeek: Long): Flow<Float?> {
+    /*override fun getWeeklySum(startOfWeek: Long): Flow<Float?> {
         return earningsDao.getWeeklySum()
-    }
+    }*/
 
     override fun getMonthlySum(startOfMonth: Long): Flow<Float?> {
         return earningsDao.getMonthlySum()

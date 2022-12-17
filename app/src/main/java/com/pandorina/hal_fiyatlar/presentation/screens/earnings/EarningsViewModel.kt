@@ -17,7 +17,7 @@ class EarningsViewModel @Inject constructor(
         _uiState.value = EarningsUiState(isLoading = true)
         getPrices()
         getDailySum()
-        getWeeklySum()
+        //getWeeklySum()
         getMonthlySum()
         getTotalSum()
     }
@@ -46,7 +46,7 @@ class EarningsViewModel @Inject constructor(
         }
     }
 
-    private fun getWeeklySum(){
+    /*private fun getWeeklySum(){
         launchViewModelScope {
             earningRepository.getWeeklySum().collectLatest {
                 _uiState.value = _uiState.value.copy(
@@ -55,7 +55,7 @@ class EarningsViewModel @Inject constructor(
                 )
             }
         }
-    }
+    }*/
 
     private fun getMonthlySum(){
         launchViewModelScope {

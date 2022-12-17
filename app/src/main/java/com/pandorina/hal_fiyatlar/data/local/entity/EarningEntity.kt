@@ -14,10 +14,8 @@ data class EarningEntity(
     val name: String,
     @ColumnInfo(name = "unit_price")
     val unitPrice: Float,
-    @ColumnInfo(name = "total_case_count")
-    val totalCaseCount: Float,
-    @ColumnInfo(name = "case_weight")
-    val caseWeight: Float,
+    @ColumnInfo(name = "total_weight")
+    val totalWeight: Float,
     @ColumnInfo(name = "commission_percentage")
     val commissionPercentage: Float,
     @ColumnInfo(name = "total_income")
@@ -31,8 +29,7 @@ data class EarningEntity(
             id = id,
             name = name,
             unitPrice = unitPrice,
-            totalCaseCount = totalCaseCount,
-            caseWeight = caseWeight,
+            totalWeight = totalWeight,
             commissionPercentage = commissionPercentage,
             totalIncome = totalIncome,
             timeStamp = timeStamp

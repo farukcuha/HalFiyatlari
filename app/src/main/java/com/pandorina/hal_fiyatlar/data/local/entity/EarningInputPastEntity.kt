@@ -14,7 +14,7 @@ data class EarningInputPastEntity(
 ) {
 
     enum class Field{
-        NAME, UNIT_PRICE, TOTAL_CASE_COUNT, CASE_WEIGHT, COMMISSION_PERCENTAGE
+        NAME, UNIT_PRICE, TOTAL_WEIGHT, COMMISSION_PERCENTAGE
     }
 }
 

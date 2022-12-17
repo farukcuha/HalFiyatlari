@@ -34,14 +34,14 @@ fun StatisticalEarningView(
             Text(
                 text = statistic.title,
                 textAlign = TextAlign.Center,
-                fontSize = 16.sp,
+                fontSize = 15.sp,
                 modifier = Modifier.align(CenterHorizontally)
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = "${statistic.income} TL",
                 textAlign = TextAlign.Center,
-                fontSize = 20.sp,
+                fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.align(CenterHorizontally)
             )

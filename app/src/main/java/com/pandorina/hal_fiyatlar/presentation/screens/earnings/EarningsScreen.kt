@@ -59,18 +59,14 @@ fun EarningsScreen(
         content = {
             Column {
                 LazyVerticalGrid(
-                    cells = GridCells.Fixed(2),
+                    cells = GridCells.Fixed(3),
                     modifier = Modifier
-                        .padding(8.dp)
+                        .padding(4.dp)
                 ) {
                     val list = listOf(
                         Statistic(
                             "Bugün",
                             uiState.dailySum ?: 0f
-                        ),
-                        Statistic(
-                            "Bu Hafta",
-                            uiState.weeklySum ?: 0f
                         ),
                         Statistic(
                             "Bu Ay",

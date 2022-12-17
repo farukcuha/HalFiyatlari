@@ -31,7 +31,6 @@ fun EarningItem(
         850f,
         48f,
         9800f,
-        5780f,
         5946464816487
     ),
     onClickEdit: (Earning?) -> Unit = {},
@@ -60,8 +59,8 @@ fun EarningItem(
 
             Text(
                 fontWeight = FontWeight.Normal,
-                text = "\uD83D\uDCCA ${earning.totalCaseCount.toInt()} Kasa " +
-                        "- ${(earning.caseWeight * earning.totalCaseCount).toInt()} Kilogram " +
+                text = "\uD83D\uDCCA " +
+                        "${(earning.totalWeight).toInt()} Kilogram " +
                         "- ${earning.unitPrice} ₺",
                 modifier = Modifier
                     .constrainAs(refTotalAmount) {

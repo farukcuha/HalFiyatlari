@@ -8,7 +8,7 @@ import com.pandorina.hal_fiyatlar.data.local.entity.EarningInputPastEntity
 
 @Database(
     entities = [EarningEntity::class, CityEntity::class, EarningInputPastEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = false)
 abstract class AppDatabase: RoomDatabase() {
 

@@ -15,7 +15,7 @@ interface EarningRepository {
 
     fun getDailySum(startOfDay: Long = EarningsDao.getStartOfDay): Flow<Float?>
 
-    fun getWeeklySum(startOfWeek: Long = EarningsDao.getStartOfWeek): Flow<Float?>
+    //fun getWeeklySum(startOfWeek: Long = EarningsDao.getStartOfWeek): Flow<Float?>
 
     fun getMonthlySum(startOfMonth: Long = EarningsDao.getStartOfMonth): Flow<Float?>
 

@@ -77,15 +77,12 @@ fun AddEarningScreen(
                 var unitPrice by remember { mutableStateOf(earning?.unitPrice?.toString() ?: "") }
                 var isErrorUnitPrice by remember { mutableStateOf(false) }
 
-                var totalCaseCount by remember {
+                var totalWeight by remember {
                     mutableStateOf(
-                        earning?.totalCaseCount?.toString() ?: ""
+                        earning?.totalWeight?.toString() ?: ""
                     )
                 }
-                var isErrorTotalCaseCount by remember { mutableStateOf(false) }
-
-                var caseWeight by remember { mutableStateOf(earning?.caseWeight?.toString() ?: "") }
-                var isErrorCaseWeight by remember { mutableStateOf(false) }
+                var isErrorTotalWeight by remember { mutableStateOf(false) }
 
                 var commissionPercentage by remember {
                     mutableStateOf(
@@ -107,7 +104,7 @@ fun AddEarningScreen(
 
                 try {
                     val income =
-                        (unitPrice.toPriceValue() * totalCaseCount.toPriceValue() * caseWeight.toPriceValue())
+                        (unitPrice.toPriceValue() * totalWeight.toPriceValue())
                     totalIncome =
                         (income - income * (commissionPercentage.toPriceValue() / 100)).toString()
                 } catch (e: Exception) {
@@ -159,23 +156,23 @@ fun AddEarningScreen(
                     }
                 }
                 EarningTextField(
-                    label = "Toplam Kasa Sayısı",
-                    onValueChange = { totalCaseCount = it },
-                    text = totalCaseCount,
+                    label = "Toplam Kilo",
+                    onValueChange = { totalWeight = it },
+                    text = totalWeight,
                     keyboardType = KeyboardType.Number,
-                    isError = isErrorTotalCaseCount,
-                    onClickClear = { totalCaseCount = "" }
+                    isError = isErrorTotalWeight,
+                    onClickClear = { totalWeight = "" }
                 )
-                AnimatedVisibility(visible = uiState.totalCaseCountInputPasts.isNotEmpty()) {
+                AnimatedVisibility(visible = uiState.totalWeightInputPasts.isNotEmpty()) {
                     ChipGroup(
                         modifier = Modifier.padding(top = 8.dp),
-                        labels = uiState.totalCaseCountInputPasts,
-                        onClickClear = { viewModel.deleteInputPasts(EarningInputPastEntity.Field.TOTAL_CASE_COUNT) }
+                        labels = uiState.totalWeightInputPasts,
+                        onClickClear = { viewModel.deleteInputPasts(EarningInputPastEntity.Field.TOTAL_WEIGHT) }
                     ){
-                        totalCaseCount = it
+                        totalWeight = it
                     }
                 }
-                EarningTextField(
+                /*EarningTextField(
                     label = "Kasa Kaç Kilogram?",
                     onValueChange = { caseWeight = it },
                     text = caseWeight,
@@ -191,7 +188,7 @@ fun AddEarningScreen(
                     ){
                         caseWeight = it
                     }
-                }
+                }*/
                 EarningTextField(
                     label = "Komisyon Oranı (Yüzde)",
                     onValueChange = { commissionPercentage = it },
@@ -240,15 +237,10 @@ fun AddEarningScreen(
                         return@EarningButton
                     } else isErrorUnitPrice = false
 
-                    if (totalCaseCount.isEmpty()) {
-                        isErrorTotalCaseCount = true
+                    if (totalWeight.isEmpty()) {
+                        isErrorTotalWeight = true
                         return@EarningButton
-                    } else isErrorTotalCaseCount = false
-
-                    if (caseWeight.isEmpty()) {
-                        isErrorCaseWeight = true
-                        return@EarningButton
-                    } else isErrorCaseWeight = false
+                    } else isErrorTotalWeight = false
 
                     if (commissionPercentage.isEmpty()) {
                         isErrorCommissionPercentage = true
@@ -260,8 +252,7 @@ fun AddEarningScreen(
                             id = earning?.id,
                             name = name,
                             unitPrice = unitPrice.toPriceValue(),
-                            totalCaseCount = totalCaseCount.toPriceValue(),
-                            caseWeight = caseWeight.toPriceValue(),
+                            totalWeight = totalWeight.toPriceValue(),
                             commissionPercentage = commissionPercentage.toPriceValue(),
                             totalIncome = totalIncome.toPriceValue(),
                             timeStamp = time

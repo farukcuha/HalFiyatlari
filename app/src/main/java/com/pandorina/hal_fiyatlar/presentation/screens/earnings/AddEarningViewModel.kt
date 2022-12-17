@@ -29,8 +29,7 @@ class AddEarningViewModel @Inject constructor(
 
             insertInputPast(earningEntity.name, EarningInputPastEntity.Field.NAME)
             insertInputPast(earningEntity.unitPrice.toString(), EarningInputPastEntity.Field.UNIT_PRICE)
-            insertInputPast(earningEntity.totalCaseCount.toString(), EarningInputPastEntity.Field.TOTAL_CASE_COUNT)
-            insertInputPast(earningEntity.caseWeight.toString(), EarningInputPastEntity.Field.CASE_WEIGHT)
+            insertInputPast(earningEntity.totalWeight.toString(), EarningInputPastEntity.Field.TOTAL_WEIGHT)
             insertInputPast(earningEntity.commissionPercentage.toString(), EarningInputPastEntity.Field.COMMISSION_PERCENTAGE)
         }
     }
@@ -72,17 +71,12 @@ class AddEarningViewModel @Inject constructor(
                     entity.name
                 })
             }
-            getInputPast(EarningInputPastEntity.Field.TOTAL_CASE_COUNT){
-                _uiState.value = _uiState.value.copy(totalCaseCountInputPasts = it.map { entity ->
+            getInputPast(EarningInputPastEntity.Field.TOTAL_WEIGHT){
+                _uiState.value = _uiState.value.copy(totalWeightInputPasts = it.map { entity ->
                     entity.name
                 })
             }
 
-            getInputPast(EarningInputPastEntity.Field.CASE_WEIGHT){
-                _uiState.value = _uiState.value.copy(caseWeightInputPasts = it.map { entity ->
-                    entity.name
-                })
-            }
             getInputPast(EarningInputPastEntity.Field.COMMISSION_PERCENTAGE){
                 _uiState.value = _uiState.value.copy(commissionPercentageInputPasts = it.map { entity ->
                     entity.name
