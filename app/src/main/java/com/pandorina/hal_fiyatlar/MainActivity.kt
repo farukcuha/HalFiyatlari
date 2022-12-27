@@ -53,7 +53,7 @@ class MainActivity : ComponentActivity() {
         }
 
         AppUpdateManager().checkUpdateInfo(this)
-        InterstitialAdManager.initialize(this)
+        InterstitialAdManager(this)
         GNTReviewManager.with(this)
             .setInstallDays(2)
             .setLaunchTimes(3)

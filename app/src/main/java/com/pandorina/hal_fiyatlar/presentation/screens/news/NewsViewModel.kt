@@ -5,7 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pandorina.hal_fiyatlar.domain.repository.NewsRepository
-import com.pandorina.hal_fiyatlar.util.InterstitialAdManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -23,7 +22,6 @@ class NewsViewModel @Inject constructor(
     val currentPage = MutableStateFlow(0)
 
     init {
-        InterstitialAdManager.show()
         _newsUiStateUiState.value = NewsUiState()
         getNewsCategories()
     }

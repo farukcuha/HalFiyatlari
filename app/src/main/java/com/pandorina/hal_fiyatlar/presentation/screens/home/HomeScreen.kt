@@ -2,6 +2,7 @@ package com.pandorina.hal_fiyatlar.presentation.screens.home
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -19,6 +20,7 @@ import com.pandorina.hal_fiyatlar.presentation.navigation.NavigationRoutes
 import com.pandorina.hal_fiyatlar.presentation.screens.home.components.CityPhoto
 import com.pandorina.hal_fiyatlar.presentation.screens.home.components.InfoDialog
 import com.pandorina.hal_fiyatlar.presentation.screens.home.components.OptionCardItem
+import com.pandorina.hal_fiyatlar.util.InterstitialAdManager
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -29,6 +31,7 @@ fun HomeScreen(
     val viewModel: HomeViewModel = hiltViewModel()
     val uiState = viewModel.photoUiState.value
     val context = LocalContext.current
+    val activity = context as ComponentActivity
 
     Scaffold(
         topBar = {
@@ -86,6 +89,7 @@ fun HomeScreen(
                             option = HomeOptions.Earnings,
                             navigate = {
                                 navController.navigate(NavigationRoutes.Earnings.route)
+                                InterstitialAdManager(activity)
                             },
                             infoText = uiState.infoText,
                             isActive = uiState.isEarningsActive
@@ -99,6 +103,7 @@ fun HomeScreen(
                             option = HomeOptions.News,
                             navigate = {
                                 navController.navigate(NavigationRoutes.News.route)
+                                InterstitialAdManager(activity)
                             },
                             infoText = uiState.infoText,
                             isActive = uiState.isNewsActive
@@ -108,6 +113,7 @@ fun HomeScreen(
                             option = HomeOptions.Currency,
                             navigate = {
                                 navController.navigate(NavigationRoutes.Currency.route)
+                                InterstitialAdManager(activity)
                             },
                             infoText = uiState.infoText,
                             isActive = uiState.isCurrencyActive

@@ -13,7 +13,6 @@ class EarningsViewModel @Inject constructor(
 ): BaseViewModel<EarningsUiState>(EarningsUiState()) {
 
     init {
-        InterstitialAdManager.show()
         _uiState.value = EarningsUiState(isLoading = true)
         getPrices()
         getDailySum()
