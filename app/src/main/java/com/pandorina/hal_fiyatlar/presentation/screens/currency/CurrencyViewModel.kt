@@ -2,6 +2,7 @@ package com.pandorina.hal_fiyatlar.presentation.screens.currency
 
 import com.pandorina.hal_fiyatlar.core.BaseViewModel
 import com.pandorina.hal_fiyatlar.domain.repository.CurrencyRepository
+import com.pandorina.hal_fiyatlar.util.InterstitialAdManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject

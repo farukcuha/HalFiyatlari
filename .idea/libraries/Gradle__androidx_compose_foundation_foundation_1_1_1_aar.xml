@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.compose.foundation:foundation:1.1.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/069e86f986143c92f1d22b6efcbde4b8/transformed/foundation-1.1.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/069e86f986143c92f1d22b6efcbde4b8/transformed/foundation-1.1.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/069e86f986143c92f1d22b6efcbde4b8/transformed/foundation-1.1.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/c20b99ebb92c10d5f4f94d912cc03542/transformed/foundation-1.1.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c20b99ebb92c10d5f4f94d912cc03542/transformed/foundation-1.1.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c20b99ebb92c10d5f4f94d912cc03542/transformed/foundation-1.1.1/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

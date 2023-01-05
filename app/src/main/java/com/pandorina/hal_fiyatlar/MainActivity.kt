@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.rememberNavController
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
@@ -23,6 +24,7 @@ import com.pandorina.hal_fiyatlar.util.AppUpdateManager
 import com.pandorina.hal_fiyatlar.util.InterstitialAdManager
 import com.pandorina.hal_fiyatlar.util.in_app_review.GNTReviewManager
 import com.pandorina.hal_fiyatlar.util.showToast
+import kotlinx.coroutines.delay
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -53,7 +55,7 @@ class MainActivity : ComponentActivity() {
         }
 
         AppUpdateManager().checkUpdateInfo(this)
-        InterstitialAdManager(this)
+        InterstitialAdManager.initialize(this)
         GNTReviewManager.with(this)
             .setInstallDays(2)
             .setLaunchTimes(3)

@@ -74,7 +74,6 @@ fun CitiesScreen(
                                 navController.navigate(
                                     "${NavigationRoutes.Prices.route}/${city.id}/${city.title}"
                                 )
-                                InterstitialAdManager(activity)
                             }
                         }
                     }

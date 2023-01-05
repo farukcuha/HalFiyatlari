@@ -89,7 +89,7 @@ fun HomeScreen(
                             option = HomeOptions.Earnings,
                             navigate = {
                                 navController.navigate(NavigationRoutes.Earnings.route)
-                                InterstitialAdManager(activity)
+                                InterstitialAdManager.show()
                             },
                             infoText = uiState.infoText,
                             isActive = uiState.isEarningsActive
@@ -103,7 +103,7 @@ fun HomeScreen(
                             option = HomeOptions.News,
                             navigate = {
                                 navController.navigate(NavigationRoutes.News.route)
-                                InterstitialAdManager(activity)
+                                InterstitialAdManager.show()
                             },
                             infoText = uiState.infoText,
                             isActive = uiState.isNewsActive
@@ -113,7 +113,7 @@ fun HomeScreen(
                             option = HomeOptions.Currency,
                             navigate = {
                                 navController.navigate(NavigationRoutes.Currency.route)
-                                InterstitialAdManager(activity)
+                                InterstitialAdManager.show()
                             },
                             infoText = uiState.infoText,
                             isActive = uiState.isCurrencyActive
