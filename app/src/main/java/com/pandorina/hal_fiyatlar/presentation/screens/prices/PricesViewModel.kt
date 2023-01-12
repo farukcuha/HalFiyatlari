@@ -4,6 +4,7 @@ import androidx.compose.runtime.*
 import androidx.lifecycle.*
 import com.pandorina.hal_fiyatlar.core.BaseViewModel
 import com.pandorina.hal_fiyatlar.domain.repository.PricesRepository
+import com.pandorina.hal_fiyatlar.util.InterstitialAdManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -30,6 +31,8 @@ class PricesViewModel @Inject constructor(
         savedStateHandle.get<String>("title")?.let {
             _title.value = it
         }
+        InterstitialAdManager.show()
+
     }
 
     private fun getDates(cityId: String?) {
