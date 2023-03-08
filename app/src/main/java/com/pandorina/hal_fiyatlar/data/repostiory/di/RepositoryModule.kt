@@ -1,9 +1,9 @@
 package com.pandorina.hal_fiyatlar.data.repostiory.di
 
 import com.google.firebase.firestore.FirebaseFirestore
-import com.pandorina.hal_fiyatlar.data.local.EarningInputPastsDao
-import com.pandorina.hal_fiyatlar.data.local.EarningsDao
-import com.pandorina.hal_fiyatlar.data.local.FavoriteCitiesDao
+import com.pandorina.hal_fiyatlar.data.local.dao.EarningInputPastsDao
+import com.pandorina.hal_fiyatlar.data.local.dao.EarningsDao
+import com.pandorina.hal_fiyatlar.data.local.dao.FavoriteCitiesDao
 import com.pandorina.hal_fiyatlar.data.remote.city.CitiesService
 import com.pandorina.hal_fiyatlar.data.remote.currency.CurrencyService
 import com.pandorina.hal_fiyatlar.data.remote.news.NewsService

@@ -22,9 +22,6 @@
           <option name="jvmTarget" value="1.8" />
           <option name="languageVersion" value="1.7" />
           <option name="apiVersion" value="1.7" />
-          <option name="pluginOptions">
-            <array />
-          </option>
           <option name="pluginClasspaths">
             <array>
               <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin-api/1.7.10/3b38be7ed8f8c678b13991d5b3ec99c4908d3313/kotlin-gradle-plugin-api-1.7.10-gradle70.jar" />
@@ -41,8 +38,11 @@
               <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.intellij.deps/trove4j/1.0.20200330/3afb14d5f9ceb459d724e907a21145e8ff394f02/trove4j-1.0.20200330.jar" />
               <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/5.6.0/330f2244e9030119ab3030fc3fededc86713d9cc/jna-5.6.0.jar" />
               <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-util-io/1.7.10/fdcfe10a398c931a5770ca45cffdd245112ca949/kotlin-util-io-1.7.10.jar" />
-              <option value="$KOTLIN_BUNDLED$/lib/kotlinx-serialization-compiler-plugin.jar" />
+              <option value="$APPLICATION_HOME_DIR$/plugins/Kotlin/kotlinc/lib/kotlinx-serialization-compiler-plugin.jar" />
             </array>
+          </option>
+          <option name="pluginOptions">
+            <array />
           </option>
           <option name="errors">
             <ArgumentParseErrors />
@@ -53,11 +53,6 @@
     <facet type="android" name="Android">
       <configuration>
         <option name="SELECTED_BUILD_VARIANT" value="productionDebug" />
-        <option name="ASSEMBLE_TASK_NAME" value="assembleProductionDebug" />
-        <option name="COMPILE_JAVA_TASK_NAME" value="compileProductionDebugSources" />
-        <afterSyncTasks>
-          <task>generateProductionDebugSources</task>
-        </afterSyncTasks>
         <option name="ALLOW_USER_CONFIGURATION" value="false" />
         <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
         <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />

@@ -1,22 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: io.coil-kt:coil-compose-base:2.1.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/26ae78d2b968a38abbe13c0856e37e18/transformed/coil-compose-base-2.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e05a21a2d04c89e3d648c01979271f49/transformed/coil-compose-base-2.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d06bad1726889932541b0c52bd111183/transformed/coil-compose-base-2.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f6986453cf410ecb4190741404d7b55b/transformed/coil-compose-base-2.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9957b491d4ccead7cc4b99dc6cc52e17/transformed/coil-compose-base-2.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/14eb77ccbb16d8dd6526bdda34d1b20f/transformed/coil-compose-base-2.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fef5f17adb09b603a9d750b4c69ecdb4/transformed/coil-compose-base-2.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0d61a0bfc85b4425021565618ff74cbf/transformed/coil-compose-base-2.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0c1393f5fd3cb955c7616ecacad2632b/transformed/coil-compose-base-2.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e9533a7077820d83dbd56c73c940614c/transformed/coil-compose-base-2.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9d9fbb38915c71507ca80dd592e22f56/transformed/coil-compose-base-2.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/db798440b65c100b39429be5400b5e57/transformed/coil-compose-base-2.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cd4e00a4612c36d0790adbc75a4838e6/transformed/coil-compose-base-2.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c09709a62652820181efb7de2fb8d4ec/transformed/coil-compose-base-2.1.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9aa3fd29e12c3e6ec78b71fbadf283ee/transformed/coil-compose-base-2.1.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9aa3fd29e12c3e6ec78b71fbadf283ee/transformed/coil-compose-base-2.1.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f0a6e611d47c5c9ab9e0c3045b5ede60/transformed/coil-compose-base-2.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f0a6e611d47c5c9ab9e0c3045b5ede60/transformed/coil-compose-base-2.1.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.coil-kt/coil-compose-base/2.1.0/6c31c04e05432c897bf1c744bc141e26a886ed1/coil-compose-base-2.1.0-javadoc.jar!/" />

@@ -12,10 +12,8 @@ data class CityDto(
     val title: String,
     @SerialName("imageUrl")
     val imageUrl: String,
-    @SerialName("isActive")
-    val isActive: Boolean? = null,
-    @SerialName("priority")
-    val priority: Int? = null
+    @SerialName("srcUrl")
+    val srcUrl: String
 ): BaseDto<City>() {
 
     override fun toDomain(): City {
@@ -23,8 +21,7 @@ data class CityDto(
             id = id,
             title = title,
             imageUrl = imageUrl,
-            isActive = true,
-            priority = priority
+            srcUrl = srcUrl
         )
     }
 }

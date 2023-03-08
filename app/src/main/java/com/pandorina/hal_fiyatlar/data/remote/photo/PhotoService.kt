@@ -6,6 +6,5 @@ interface PhotoService {
     companion object {
         const val ROUTE_PHOTO = "/photo"
     }
-
     suspend fun getHomeScreenPhoto(): HttpResponse
 }

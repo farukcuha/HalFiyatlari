@@ -1,22 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.firebase:protolite-well-known-types:18.0.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8308671c1b4892124e974ebf65f4fca4/transformed/protolite-well-known-types-18.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d0342b03bbee46895215d8596979d4ce/transformed/protolite-well-known-types-18.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/548f15337d88b792ab711436e8feeb38/transformed/protolite-well-known-types-18.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cf9d17b4d3054c20546a99d5e59d6d23/transformed/protolite-well-known-types-18.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e7b85f543b29e235d49818affb79fb63/transformed/protolite-well-known-types-18.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0af79bc8cc60108c00f2fc6e4b87e34a/transformed/protolite-well-known-types-18.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9a3388c4c9dfc28c1cb4ba1b296a600a/transformed/protolite-well-known-types-18.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0d7693001a8079203d5b5147b0eb265e/transformed/protolite-well-known-types-18.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0078a120e5a215f8fadcdf79765a96cf/transformed/protolite-well-known-types-18.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/44bd4dad1abd14da8a56e3cbd20c6328/transformed/protolite-well-known-types-18.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/255449858d2e6c2a9069eb233c705149/transformed/protolite-well-known-types-18.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/82c3da0a86364513a0880c25f0c820fc/transformed/protolite-well-known-types-18.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b849792393c0a2ce2ef84c8cec31ce83/transformed/protolite-well-known-types-18.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c8d428fdda5c9fb4f80ddf91f2ae5a27/transformed/protolite-well-known-types-18.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/186b0862329e93c601194576b2e66f78/transformed/protolite-well-known-types-18.0.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/186b0862329e93c601194576b2e66f78/transformed/protolite-well-known-types-18.0.0/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/dea2709464b662cfa7f19cb2fe931b34/transformed/protolite-well-known-types-18.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/dea2709464b662cfa7f19cb2fe931b34/transformed/protolite-well-known-types-18.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/protolite-well-known-types/18.0.0/8e15c66257eefa93807e8dc218bf82da40c5390c/protolite-well-known-types-18.0.0-javadoc.jar!/" />

@@ -7,11 +7,9 @@ import io.ktor.client.statement.*
 class NewsServiceImpl(
     private val client: HttpClient
 ) : NewsService {
-
     override suspend fun getCategories(): HttpResponse {
         return client.get(NewsService.ROUTE_CATEGORIES)
     }
-
     override suspend fun getNews(categoryId: Int?): HttpResponse {
         return client.get(NewsService.ROUTE_NEWS){
             url {

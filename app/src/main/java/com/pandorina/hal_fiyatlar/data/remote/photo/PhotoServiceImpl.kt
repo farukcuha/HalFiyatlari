@@ -8,7 +8,6 @@ import io.ktor.client.statement.*
 class PhotoServiceImpl(
     val client: HttpClient
 ): PhotoService {
-
     override suspend fun getHomeScreenPhoto(): HttpResponse {
         return client.get(PhotoService.ROUTE_PHOTO)
     }

@@ -1,6 +1,6 @@
 package com.pandorina.hal_fiyatlar.data.repostiory
 
-import com.pandorina.hal_fiyatlar.data.local.EarningsDao
+import com.pandorina.hal_fiyatlar.data.local.dao.EarningsDao
 import com.pandorina.hal_fiyatlar.data.local.entity.EarningEntity
 import com.pandorina.hal_fiyatlar.domain.repository.EarningRepository
 import kotlinx.coroutines.flow.Flow

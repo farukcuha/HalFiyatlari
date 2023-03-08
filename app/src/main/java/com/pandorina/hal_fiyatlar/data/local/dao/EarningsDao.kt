@@ -1,4 +1,4 @@
-package com.pandorina.hal_fiyatlar.data.local
+package com.pandorina.hal_fiyatlar.data.local.dao
 
 import androidx.room.*
 import com.pandorina.hal_fiyatlar.data.local.entity.EarningEntity
@@ -13,11 +13,6 @@ interface EarningsDao {
         val getStartOfDay = Calendar.getInstance(TimeZone.getDefault()).timeInMillis.run {
             this - (this % 86_400_000)
         }
-
-        /*val getStartOfWeek = Calendar.getInstance(TimeZone.getDefault()).run {
-            set(Calendar.MONDAY, 1)
-            timeInMillis
-        }*/
 
         val getStartOfMonth = Calendar.getInstance(TimeZone.getDefault()).run {
             set(Calendar.DAY_OF_MONTH, 1)
@@ -39,9 +34,6 @@ interface EarningsDao {
 
     @Query("SELECT sum(total_income) FROM earnings_table WHERE time > :startOfDay")
     fun getDailySum(startOfDay: Long = getStartOfDay): Flow<Float?>
-
-    /*@Query("SELECT sum(total_income) FROM earnings_table WHERE time > :startOfWeek")
-    fun getWeeklySum(startOfWeek: Long = getStartOfWeek): Flow<Float?>*/
 
     @Query("SELECT sum(total_income) FROM earnings_table WHERE time > :startOfMonth")
     fun getMonthlySum(startOfMonth: Long = getStartOfMonth): Flow<Float?>

@@ -1,4 +1,4 @@
-package com.pandorina.hal_fiyatlar.data.local
+package com.pandorina.hal_fiyatlar.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Insert

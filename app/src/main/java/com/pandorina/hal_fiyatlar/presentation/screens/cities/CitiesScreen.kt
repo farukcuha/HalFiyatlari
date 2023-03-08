@@ -16,9 +16,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.pandorina.hal_fiyatlar.R
 import com.pandorina.hal_fiyatlar.data.local.entity.CityEntity
-import com.pandorina.hal_fiyatlar.presentation.component.CustomTopAppBar
-import com.pandorina.hal_fiyatlar.presentation.component.MenuAction
-import com.pandorina.hal_fiyatlar.presentation.component.MenuIcon
+import com.pandorina.hal_fiyatlar.presentation.component.*
 import com.pandorina.hal_fiyatlar.presentation.navigation.NavigationRoutes
 import com.pandorina.hal_fiyatlar.presentation.screens.cities.components.CityView
 import com.pandorina.hal_fiyatlar.util.InterstitialAdManager
@@ -33,7 +31,6 @@ fun CitiesScreen(
     val viewModel: CitiesViewModel = hiltViewModel()
     val state = viewModel.uiState.value
     val listState = rememberLazyListState()
-    val activity = LocalContext.current as ComponentActivity
 
     Scaffold(
         topBar = {
@@ -71,9 +68,10 @@ fun CitiesScreen(
                                     )
                                 )
                             }) { city ->
-                                navController.navigate(
-                                    "${NavigationRoutes.Prices.route}/${city.id}/${city.title}"
-                                )
+                                //InterstitialAdManager.show()
+                                navController.navigate(NavigationRoutes.WebScreen.route)
+                                webViewTitle = city.title!!
+                                webViewUrl = city.srcUrl!!
                             }
                         }
                     }

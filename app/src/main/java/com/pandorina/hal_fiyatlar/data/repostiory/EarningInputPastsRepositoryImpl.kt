@@ -1,6 +1,6 @@
 package com.pandorina.hal_fiyatlar.data.repostiory
 
-import com.pandorina.hal_fiyatlar.data.local.EarningInputPastsDao
+import com.pandorina.hal_fiyatlar.data.local.dao.EarningInputPastsDao
 import com.pandorina.hal_fiyatlar.data.local.entity.EarningInputPastEntity
 import com.pandorina.hal_fiyatlar.domain.repository.EarningInputPastsRepository
 import kotlinx.coroutines.flow.Flow

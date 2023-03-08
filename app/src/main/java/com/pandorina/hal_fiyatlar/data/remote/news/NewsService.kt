@@ -7,8 +7,6 @@ interface NewsService {
         const val ROUTE_NEWS = "/news"
         const val ROUTE_CATEGORIES = "$ROUTE_NEWS/categories"
     }
-
     suspend fun getCategories(): HttpResponse
-
     suspend fun getNews(categoryId: Int?): HttpResponse
 }

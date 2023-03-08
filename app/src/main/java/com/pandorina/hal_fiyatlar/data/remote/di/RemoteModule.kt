@@ -36,7 +36,7 @@ object RemoteModule{
         return HttpClient(Android){
             defaultRequest {
                 host = BuildConfig.BASE_URL
-                url { protocol = URLProtocol.HTTPS }
+                url { protocol = URLProtocol.HTTP }
             }
 
             install(ContentNegotiation){

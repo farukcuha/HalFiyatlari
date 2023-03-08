@@ -8,8 +8,6 @@ interface PricesService {
         const val ROUTE_FETCH_PRICES = "$ROUTE_PRICES/fetch"
         const val ROUTE_DATES = "$ROUTE_PRICES/dates"
     }
-
     suspend fun getPrices(cityId: String?, date: String?): HttpResponse
-
     suspend fun getPriceDates(cityId: String?): HttpResponse
 }

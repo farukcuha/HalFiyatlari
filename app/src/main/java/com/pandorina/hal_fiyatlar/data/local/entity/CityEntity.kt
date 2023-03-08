@@ -12,8 +12,10 @@ data class CityEntity(
     val id: String,
     @ColumnInfo(name = "title")
     val title: String? = null,
-    @ColumnInfo(name = "image_url")
+    @ColumnInfo(name = "imageUrl")
     val imageUrl: String? = null,
+    @ColumnInfo(name = "srcUrl")
+    val srcUrl: String? = null,
     @ColumnInfo(name = "is_favorite")
     val isFavorite: Boolean = false
 ){
@@ -22,6 +24,7 @@ data class CityEntity(
             id = id,
             title = title,
             imageUrl = imageUrl,
+            srcUrl = srcUrl,
             isFavorite = isFavorite
         )
     }

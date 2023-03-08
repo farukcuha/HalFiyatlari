@@ -6,6 +6,5 @@ data class City(
     val title: String?,
     val imageUrl: String?,
     val isFavorite: Boolean = false,
-    val isActive: Boolean = true,
-    val priority: Int? = 0
+    val srcUrl: String?
 )

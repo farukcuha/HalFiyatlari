@@ -1,22 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.accompanist:accompanist-pager:0.23.1@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ba888c26af569f8aec074038cb5ab197/transformed/accompanist-pager-0.23.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fec5295a9d2e2ea97c6b1416f76ba226/transformed/accompanist-pager-0.23.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8d11e1ff5c6a80be92c384d81ef69e96/transformed/accompanist-pager-0.23.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/67a6e7f2047b1e322884082a3b3196f2/transformed/accompanist-pager-0.23.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/75aca65a740392f0e4f84a60c25fbe59/transformed/accompanist-pager-0.23.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cbfa17beba5d983f633e451c9ba4f8ce/transformed/accompanist-pager-0.23.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b3a75f5a8419c254060e98dbb23908a4/transformed/accompanist-pager-0.23.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1afae3a022ca8e0034541b33ae91233b/transformed/accompanist-pager-0.23.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9a03c7a2f117933cff3df198f31a6f86/transformed/accompanist-pager-0.23.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/95d4948f088d200343d5d4e032b6f767/transformed/accompanist-pager-0.23.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/dfbf77a67dcaf35ae2ce39137b4c8330/transformed/accompanist-pager-0.23.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/63c32d395c1a1de9bb7f09c7c12af89d/transformed/accompanist-pager-0.23.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0227cc0818d2732096257a55d41de710/transformed/accompanist-pager-0.23.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/af1ebc38800b0660e4df40f2fd545263/transformed/accompanist-pager-0.23.1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/506354e3c6d458bb9b954f5593d8b236/transformed/accompanist-pager-0.23.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/506354e3c6d458bb9b954f5593d8b236/transformed/accompanist-pager-0.23.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b6255220035e6deeab43d9e9fe05bf79/transformed/accompanist-pager-0.23.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/b6255220035e6deeab43d9e9fe05bf79/transformed/accompanist-pager-0.23.1/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.accompanist/accompanist-pager/0.23.1/356c96ff27c8fb915efc059265f8788fce9a5292/accompanist-pager-0.23.1-javadoc.jar!/" />

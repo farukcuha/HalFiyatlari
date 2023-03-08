@@ -31,7 +31,6 @@ fun HomeScreen(
     val viewModel: HomeViewModel = hiltViewModel()
     val uiState = viewModel.photoUiState.value
     val context = LocalContext.current
-    val activity = context as ComponentActivity
 
     Scaffold(
         topBar = {

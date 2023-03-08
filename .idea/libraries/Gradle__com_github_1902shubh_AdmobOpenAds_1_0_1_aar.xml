@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.1902shubh:AdmobOpenAds:1.0.1@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d7a10e9e486ecfa637fca69b51388c47/transformed/AdmobOpenAds-1.0.1/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d7a10e9e486ecfa637fca69b51388c47/transformed/AdmobOpenAds-1.0.1/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/43cd0a11b1a54c9fb141ebdfaa5a6e70/transformed/AdmobOpenAds-1.0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/43cd0a11b1a54c9fb141ebdfaa5a6e70/transformed/AdmobOpenAds-1.0.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

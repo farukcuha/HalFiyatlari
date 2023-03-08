@@ -2,10 +2,10 @@ package com.pandorina.hal_fiyatlar.data.local.di
 
 import android.content.Context
 import androidx.room.Room
-import com.pandorina.hal_fiyatlar.data.local.EarningsDao
+import com.pandorina.hal_fiyatlar.data.local.dao.EarningsDao
 import com.pandorina.hal_fiyatlar.data.local.AppDatabase
-import com.pandorina.hal_fiyatlar.data.local.EarningInputPastsDao
-import com.pandorina.hal_fiyatlar.data.local.FavoriteCitiesDao
+import com.pandorina.hal_fiyatlar.data.local.dao.EarningInputPastsDao
+import com.pandorina.hal_fiyatlar.data.local.dao.FavoriteCitiesDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

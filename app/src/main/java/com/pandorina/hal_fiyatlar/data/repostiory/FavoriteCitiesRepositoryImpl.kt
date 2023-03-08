@@ -1,6 +1,6 @@
 package com.pandorina.hal_fiyatlar.data.repostiory
 
-import com.pandorina.hal_fiyatlar.data.local.FavoriteCitiesDao
+import com.pandorina.hal_fiyatlar.data.local.dao.FavoriteCitiesDao
 import com.pandorina.hal_fiyatlar.data.local.entity.CityEntity
 import com.pandorina.hal_fiyatlar.domain.repository.FavoriteCitiesRepository
 import kotlinx.coroutines.flow.Flow

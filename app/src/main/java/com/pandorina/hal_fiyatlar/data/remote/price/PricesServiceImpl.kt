@@ -7,7 +7,6 @@ import io.ktor.client.statement.*
 class PricesServiceImpl(
     private val client: HttpClient
 ): PricesService {
-
     override suspend fun getPrices(cityId: String?, date: String?): HttpResponse {
         return client.get("${PricesService.ROUTE_FETCH_PRICES}/$cityId"){
             url {
@@ -15,7 +14,6 @@ class PricesServiceImpl(
             }
         }
     }
-
     override suspend fun getPriceDates(cityId: String?): HttpResponse {
         return client.get("${PricesService.ROUTE_DATES}/$cityId")
     }
