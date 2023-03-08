@@ -68,7 +68,7 @@ fun CitiesScreen(
                                     )
                                 )
                             }) { city ->
-                                //InterstitialAdManager.show()
+                                InterstitialAdManager.show()
                                 navController.navigate(NavigationRoutes.WebScreen.route)
                                 webViewTitle = city.title!!
                                 webViewUrl = city.srcUrl!!
