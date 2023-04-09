@@ -64,6 +64,7 @@ fun CitiesScreen(
                                         id = city.id!!,
                                         title = city.title,
                                         imageUrl = city.imageUrl,
+                                        srcUrl = city.srcUrl,
                                         isFavorite = true
                                     )
                                 )
